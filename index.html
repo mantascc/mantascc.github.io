@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Mantas Lilis — Interaction Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+
+      --ground-void: #0f0f12;
+      --ground-raised: #141418;
+      --ground-float: #1a1a20;
+
+      --text-primary: #ffffff;
+      --text-default: #f5f5f7;
+      --text-secondary: #a8aab8;
+      --text-tertiary: #666666;
+
+      --border-subtle: #1f1f24;
+      --border-default: #2a2a30;
+
+      --ube-violet: #7b6fa5;
+      --ube-lavender: #9d91b0;
+
+      --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Courier New', monospace;
+      --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+
+      --text-caption: 11px;
+      --text-base: 13px;
+      --text-body: 15px;
+      --text-lead: 20px;
+
+      --leading-base: 1.5;
+      --leading-loose: 1.75;
+      --tracking-wide: 0.08em;
+
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+      --space-16: 64px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+      background: var(--ground-void);
+      color: var(--text-default);
+      font-family: var(--font-mono);
+      font-size: var(--text-base);
+      line-height: var(--leading-base);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #bg {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      image-rendering: pixelated;
+    }
+
+    .stack {
+      position: relative;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: var(--space-16) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    .card {
+      background: var(--ground-raised);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      padding: var(--space-6) var(--space-6);
+    }
+
+    .card-label {
+      font-size: var(--text-caption);
+      color: var(--text-tertiary);
+      font-weight: 300;
+      letter-spacing: var(--tracking-wide);
+      text-transform: lowercase;
+      margin-bottom: var(--space-3);
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      color: var(--text-primary);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: var(--space-4);
+      text-transform: lowercase;
+    }
+
+    .card-body {
+      font-size: var(--text-body);
+      color: var(--text-secondary);
+      line-height: var(--leading-loose);
+    }
+
+    .card-body+.card-body {
+      margin-top: var(--space-3);
+    }
+
+    .masthead {
+      padding: var(--space-4) var(--space-2) var(--space-3);
+    }
+
+    .masthead-title {
+      font-family: var(--font-serif);
+      font-size: 48px;
+      color: var(--text-primary);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: var(--space-4);
+    }
+
+    .masthead-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+      letter-spacing: var(--tracking-wide);
+    }
+
+    .masthead-location svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .card-links {
+      margin-top: var(--space-5);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-5);
+      font-size: var(--text-caption);
+      letter-spacing: var(--tracking-wide);
+      text-transform: lowercase;
+    }
+
+    .card-links a {
+      color: var(--ube-violet);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ube-violet);
+      padding-bottom: 2px;
+      transition: color 150ms, border-color 150ms;
+    }
+
+    .card-links a:hover {
+      color: var(--ube-lavender);
+      border-bottom-color: var(--ube-lavender);
+    }
+
+    .card-tags {
+      margin-top: var(--space-4);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      background: var(--ground-float);
+      border: 1px solid var(--border-default);
+      border-radius: 999px;
+      line-height: 0;
+    }
+
+    .tag-icon {
+      height: 14px;
+      width: auto;
+      display: block;
+    }
+
+    .thumb-strip {
+      margin-top: var(--space-5);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+    }
+
+    .thumb {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .thumb-img,
+    .thumb-skeleton {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: var(--ground-float);
+      border-radius: 2px;
+      display: block;
+    }
+
+    .thumb-img {
+      transition: opacity 200ms ease, transform 200ms ease;
+    }
+
+    .thumb:hover .thumb-img {
+      opacity: 0.78;
+      transform: translateY(-1px);
+    }
+
+    .thumb-meta {
+      margin-top: var(--space-2);
+      font-size: 10px;
+      color: var(--text-tertiary);
+      letter-spacing: var(--tracking-wide);
+      text-transform: lowercase;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .thumb-fallback {
+      grid-column: 1 / -1;
+      font-size: var(--text-caption);
+      color: var(--text-tertiary);
+      letter-spacing: var(--tracking-wide);
+      text-transform: lowercase;
+    }
+
+    .thumb-fallback a {
+      color: var(--ube-violet);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ube-violet);
+    }
+
+    .sandbox-banner {
+      margin-top: var(--space-5);
+      height: 160px;
+      overflow: hidden;
+      position: relative;
+      border-radius: 2px;
+      background: var(--ground-void);
+    }
+
+    .sandbox-banner canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .sandbox-banner-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--text-base);
+      font-weight: 300;
+      letter-spacing: var(--tracking-wide);
+      text-transform: lowercase;
+      color: var(--text-secondary);
+      background: rgba(15, 15, 18, 0.92);
+      padding: 6px 12px;
+      border: 1px solid rgba(123, 111, 165, 0.25);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 150ms ease, border-color 150ms ease;
+    }
+
+    .sandbox-banner-label svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .sandbox-banner-label:hover {
+      color: var(--text-primary);
+      border-color: var(--ube-lavender);
+    }
+
+    .changelog {
+      margin-top: var(--space-5);
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .changelog li {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .changelog-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-4);
+      padding: var(--space-3) 0;
+      text-decoration: none;
+      color: var(--text-default);
+      font-size: var(--text-base);
+      transition: color 150ms ease;
+    }
+
+    .changelog-row:hover {
+      color: var(--ube-lavender);
+    }
+
+    .changelog-num {
+      color: var(--text-tertiary);
+      font-variant-numeric: tabular-nums;
+      width: 3ch;
+      flex-shrink: 0;
+      letter-spacing: var(--tracking-wide);
+    }
+
+    .changelog-name {
+      text-transform: lowercase;
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .changelog-arrow {
+      color: var(--text-tertiary);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    .changelog-row:hover .changelog-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .changelog-skeleton {
+      height: 38px;
+      background: var(--ground-float);
+      opacity: 0.4;
+    }
+
+    .changelog-fallback {
+      padding: var(--space-3) 0;
+      font-size: var(--text-caption);
+      color: var(--text-tertiary);
+      letter-spacing: var(--tracking-wide);
+      text-transform: lowercase;
+    }
+
+    .changelog-fallback a {
+      color: var(--ube-violet);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ube-violet);
+    }
+
+    @media (max-width: 480px) {
+      .thumb-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="bg"></canvas>
+
+  <main class="stack">
+    <header class="masthead">
+      <h1 class="masthead-title">Mantas Lilis — Interaction Designer</h1>
+      <div class="masthead-location">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path
+            d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <span>Bay Area, CA</span>
+      </div>
+    </header>
+
+    <article class="card">
+      <div class="card-label">001 / intro</div>
+      <p class="card-body">
+        Curiosity-led designer working on complex, agentic, data-heavy systems &mdash; usually embedded with technical
+        teams, fluent collaborating with data scientists and AI researchers. Comfortable with uncertainty.
+      </p>
+      <p class="card-body">Open to creative collaboration and mentoring.</p>
+      <div class="card-links">
+        <a href="mailto:mantas.lilis@gmail.com">email</a>
+        <a href="https://linkedin.com/in/mantaslilis" rel="me" target="_blank">linkedin</a>
+        <a href="https://github.com/mantascc" rel="me" target="_blank">github</a>
+        <a href="https://instagram.com/mantascc" rel="me" target="_blank">instagram</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-label">002 / current role</div>
+      <h2 class="card-title">Currently Snowflake</h2>
+      <p class="card-body">Designing how data teams build, observe, and direct AI agents &mdash; currently on
+        Snowflake's AI team.</p>
+      <div class="card-tags">
+        <span class="tag">
+          <img class="tag-icon" src="snowflake.png" alt="Snowflake" />
+        </span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-label">003 / sandbox</div>
+      <h2 class="card-title">Hundred days</h2>
+      <p class="card-body">&ldquo;100 days&rdquo; is a routine &mdash; a recurring sprint of small daily experiments in
+        computational aesthetics and data expression.</p>
+      <div class="sandbox-banner">
+        <canvas id="sandbox-field" aria-hidden="true"></canvas>
+        <a class="sandbox-banner-label" href="https://mantascc.github.io/100days/" target="_blank" rel="noopener">
+          <span>100 days</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M7 7h10v10" />
+            <path d="M7 17 17 7" />
+          </svg>
+        </a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-label">004 / snapshots</div>
+      <h2 class="card-title">snapshots</h2>
+      <p class="card-body">A journal of frames captured irl, running since early 2025. Most recent:</p>
+      <div class="thumb-strip" id="thumb-strip" aria-label="recent snapshots">
+        <div class="thumb-skeleton"></div>
+        <div class="thumb-skeleton"></div>
+        <div class="thumb-skeleton"></div>
+        <div class="thumb-skeleton"></div>
+      </div>
+      <div class="card-links">
+        <a href="https://mantascc.github.io/snapshots/" target="_blank" rel="noopener">view all</a>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    (function startSandboxField() {
+      const canvas = document.getElementById('sandbox-field');
+      if (!canvas) return;
+
+      const GLYPHS = [' ', '·', '∙', '∘', '○', '◌', '◎', '⊙', '●'];
+      const N = GLYPHS.length - 1;
+      const COLOR = '#7b6fa5';
+      const fn = (x, y, t) =>
+        (Math.sin(x * 0.1 + t) + Math.cos(y * 0.12 - t * 0.7) + Math.sin((x + y) * 0.05 + t * 0.5) + 3) / 6;
+
+      class Field {
+        constructor(cv) {
+          this.cv = cv;
+          this.ctx = cv.getContext('2d');
+          this.frame = 0;
+          this.lastT = 0;
+          this.fps = 1000 / 20;
+          this.fontSize = 11;
+          this._box = null;
+          this.resize();
+
+          const r = parseInt(COLOR.slice(1, 3), 16);
+          const g = parseInt(COLOR.slice(3, 5), 16);
+          const b = parseInt(COLOR.slice(5, 7), 16);
+          this.rgb = `${r},${g},${b}`;
+
+          window.addEventListener('resize', () => {
+            this.resize();
+            this._measureBox();
+          });
+        }
+
+        resize() {
+          const parent = this.cv.parentElement;
+          this.cv.width = parent.clientWidth;
+          this.cv.height = parent.clientHeight;
+          this.ctx.font = `300 ${this.fontSize}px "JetBrains Mono", monospace`;
+          this.charW = this.ctx.measureText('·').width;
+          this.charH = this.fontSize * 1.2;
+          this.cols = Math.ceil(this.cv.width / this.charW) + 1;
+          this.rows = Math.ceil(this.cv.height / this.charH) + 1;
+          this._vals = new Float32Array(this.cols * this.rows);
+          this._evals = new Float32Array(this.cols * this.rows);
+        }
+
+        _measureBox() {
+          const label = this.cv.parentElement.querySelector('.sandbox-banner-label');
+          if (!label) { this._box = null; return; }
+          const cv = this.cv.getBoundingClientRect();
+          const lb = label.getBoundingClientRect();
+          this._box = {
+            c0: Math.floor((lb.left - cv.left) / this.charW),
+            c1: Math.ceil((lb.right - cv.left) / this.charW),
+            r0: Math.floor((lb.top - cv.top) / this.charH),
+            r1: Math.ceil((lb.bottom - cv.top) / this.charH),
+          };
+        }
+
+        start() {
+          requestAnimationFrame(() => {
+            this._measureBox();
+            const tick = (t) => {
+              if (t - this.lastT > this.fps) {
+                this.render();
+                this.lastT = t;
+                this.frame++;
+              }
+              requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          });
+        }
+
+        render() {
+          const ctx = this.ctx;
+          const t = this.frame * 0.025;
+          const vals = this._vals;
+          const evals = this._evals;
+          const box = this._box;
+
+          ctx.fillStyle = 'rgba(15,15,18,0.18)';
+          ctx.fillRect(0, 0, this.cv.width, this.cv.height);
+
+          ctx.font = `300 ${this.fontSize}px "JetBrains Mono", monospace`;
+          ctx.textBaseline = 'top';
+
+          for (let row = 0; row < this.rows; row++) {
+            for (let col = 0; col < this.cols; col++) {
+              vals[row * this.cols + col] = Math.max(0, Math.min(1, fn(col, row, t)));
+            }
+          }
+
+          for (let row = 0; row < this.rows; row++) {
+            for (let col = 0; col < this.cols; col++) {
+              const idx = row * this.cols + col;
+              if (box && row >= box.r0 && row < box.r1 && col >= box.c0 && col < box.c1) {
+                evals[idx] = -1; continue;
+              }
+              if (box) {
+                const dx = col < box.c0 ? box.c0 - col : col >= box.c1 ? col - box.c1 + 1 : 0;
+                const dy = row < box.r0 ? box.r0 - row : row >= box.r1 ? row - box.r1 + 1 : 0;
+                const dist = Math.max(dx, dy);
+                if (dist > 0 && dist <= 5) {
+                  evals[idx] = Math.max(0, 1 - (dist - 1) / 4);
+                  continue;
+                }
+              }
+              evals[idx] = 0;
+            }
+          }
+
+          const ALPHAS = [0.2, 0.45, 0.7, 1.0];
+          ctx.fillStyle = `rgb(${this.rgb})`;
+          for (let p = 0; p < 4; p++) {
+            const vMin = p * 0.25;
+            const vMax = vMin + 0.25;
+            ctx.globalAlpha = ALPHAS[p];
+            for (let row = 0; row < this.rows; row++) {
+              for (let col = 0; col < this.cols; col++) {
+                const idx = row * this.cols + col;
+                const prox = evals[idx];
+                if (prox < 0) continue;
+                const v = vals[idx];
+                const dv = v * (1 - prox * 0.88);
+                if (dv < vMin || dv >= vMax) continue;
+                const glyph = GLYPHS[Math.round(dv * N)];
+                if (glyph === ' ') continue;
+                ctx.fillText(glyph, col * this.charW, row * this.charH);
+              }
+            }
+          }
+          ctx.globalAlpha = 1;
+        }
+      }
+
+      const init = () => requestAnimationFrame(() => new Field(canvas).start());
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(init);
+      } else {
+        init();
+      }
+    })();
+
+    (async function loadSnapshots() {
+      const strip = document.getElementById('thumb-strip');
+      const COUNT = 4;
+      const SRC = 'https://raw.githubusercontent.com/mantascc/snapshots/main/images.json';
+      const IMG_BASE = 'https://raw.githubusercontent.com/mantascc/snapshots/main/images/';
+      const SITE = 'https://mantascc.github.io/snapshots/';
+
+      const parseEntry = (item) => {
+        const raw = (item.date || '').toString().trim();
+        let d = null, hasMonth = false;
+        if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+          d = new Date(raw + 'T00:00:00Z'); hasMonth = true;
+        } else if (/^\d{4}-\d{2}$/.test(raw)) {
+          d = new Date(raw + '-01T00:00:00Z'); hasMonth = true;
+        } else if (/^\d{4}$/.test(raw)) {
+          d = new Date(raw + '-12-31T00:00:00Z'); hasMonth = false;
+        }
+        return { ...item, _d: d, _hasMonth: hasMonth };
+      };
+
+      const renderThumb = (item) => {
+        let dateStr = '';
+        if (item._d) {
+          const month = item._hasMonth
+            ? item._d.toLocaleString('en', { month: 'short' }).toLowerCase()
+            : '';
+          const year = "'" + String(item._d.getUTCFullYear()).slice(2);
+          dateStr = month ? `${month} ${year}` : year;
+        }
+        const locRaw = (item.originalLocation || item.title || '').toString();
+        const loc = locRaw.split(',')[0].trim().toLowerCase();
+        const caption = [dateStr, loc].filter(Boolean).join(' · ');
+        const safeFile = encodeURIComponent(item.file).replace(/%2F/g, '/');
+        const alt = (item.title || item.originalLocation || 'snapshot').replace(/"/g, '&quot;');
+        return `
+          <a class="thumb" href="${SITE}" target="_blank" rel="noopener">
+            <img class="thumb-img" src="${IMG_BASE}${safeFile}" alt="${alt}" loading="lazy" decoding="async" />
+            <div class="thumb-meta">${caption}</div>
+          </a>
+        `;
+      };
+
+      try {
+        const res = await fetch(SRC);
+        if (!res.ok) throw new Error(res.statusText);
+        const data = await res.json();
+        const recent = data.slice(-COUNT).reverse().map(parseEntry);
+
+        if (!recent.length) throw new Error('no entries');
+        strip.innerHTML = recent.map(renderThumb).join('');
+      } catch (err) {
+        strip.innerHTML = `<div class="thumb-fallback">feed unavailable — <a href="${SITE}" target="_blank" rel="noopener">visit directly</a></div>`;
+      }
+    })();
+  </script>
+
+  <script src="background.js"></script>
+</body>
+
+</html>
