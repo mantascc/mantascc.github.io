@@ -30,7 +30,7 @@
     .playing .pause-icon { display: block; }
     .wave-column { flex: 1; min-width: 0; position: relative; }
     .timeline { position: relative; height: 44px; --progress: 0%; }
-    .waveform { position: absolute; inset: 0; background: #777973; mask: url('waveform.svg') center / 100% 100% no-repeat; -webkit-mask: url('waveform.svg') center / 100% 100% no-repeat; pointer-events: none; }
+    .waveform { overflow: hidden; position: absolute; inset: 0; background: #777973; mask: url('waveform.svg') center / 100% 100% no-repeat; -webkit-mask: url('waveform.svg') center / 100% 100% no-repeat; pointer-events: none; }
     .waveform::after { content: ''; position: absolute; inset: 0; background: var(--text); clip-path: inset(0 calc(100% - var(--progress)) 0 0); }
     input[type="range"] { position: relative; appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 44px; margin: 0; background: transparent; cursor: pointer; border-radius: 0; }
     input[type="range"]::-webkit-slider-runnable-track { height: 44px; background: transparent; }
@@ -43,7 +43,13 @@
     :focus-visible { outline: 1px solid var(--text); outline-offset: 5px; }
     .status { margin: 12px 0 0; color: var(--muted); font-size: 11px; }
     .status:empty { display: none; }
-    @media (max-width: 440px) { body { padding: 32px 20px; } .heading { margin: 0 0 20px; } .transport { gap: 12px; } }
+    @media (max-width: 600px), (max-height: 700px) {
+      body { padding: calc(16px + env(safe-area-inset-top)) calc(20px + env(safe-area-inset-right)) calc(16px + env(safe-area-inset-bottom)) calc(20px + env(safe-area-inset-left)); }
+      .heading { margin: 0 0 16px; }
+      .artwork { max-height: max(80px, calc(100svh - 180px - env(safe-area-inset-top) - env(safe-area-inset-bottom))); object-fit: contain; }
+      .player { margin-top: 16px; }
+      .transport { gap: 12px; }
+    }
   </style>
 </head>
 <body>
