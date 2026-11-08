@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Listen to Poliklinika by Aida.">
+  <title>Poliklinika — Aida</title>
+  <style>
+    :root { color-scheme: dark; --ground: #0a0a0a; --text: #e8e5de; --muted: #989994; --accent: #e65b35; font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--ground); color: var(--text); }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100svh; display: grid; place-items: center; padding: 40px 24px; }
+    main { width: min(100%, 440px); }
+    .artwork { display: block; width: 100%; height: auto; }
+    .heading { margin: 0 0 20px; text-align: left; }
+    h1 { margin: 0; font: 500 26px/1.2 Helvetica, Arial, sans-serif; letter-spacing: -.04em; }
+    audio { width: 100%; }
+    .player { display: none; margin-top: 24px; padding-bottom: 24px; }
+    .enhanced .player { display: block; }
+    .enhanced audio { display: none; }
+    .transport { display: flex; align-items: center; gap: 20px; }
+    button { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 0; background: var(--accent); color: var(--ground); cursor: pointer; }
+    button:hover { background: #f27652; }
+    button svg { width: 20px; height: 20px; fill: currentColor; }
+    #loop { background: transparent; color: var(--muted); position: relative; }
+    #loop:hover { color: var(--text); }
+    #loop[aria-pressed="true"] { color: var(--accent); }
+    #loop[aria-pressed="true"]::after { content: ''; position: absolute; bottom: 3px; width: 3px; height: 3px; background: currentColor; }
+    #loop svg { fill: none; stroke: currentColor; stroke-width: 1.5; }
+    .waveform::before { content: ''; position: absolute; z-index: 1; inset: 0; background: linear-gradient(100deg, transparent 35%, #ffffff24 50%, transparent 65%); transform: translateX(-100%); opacity: 0; }
+    .is-playing .waveform::before { opacity: 1; animation: shimmer 4s linear infinite; }
+    @keyframes shimmer { to { transform: translateX(100%); } }
+    @media (prefers-reduced-motion: reduce) { .is-playing .waveform::before { animation: none; opacity: 0; } }
+    .pause-icon, .playing .play-icon { display: none; }
+    .playing .pause-icon { display: block; }
+    .wave-column { flex: 1; min-width: 0; position: relative; }
+    .timeline { position: relative; height: 44px; --progress: 0%; }
+    .waveform { position: absolute; inset: 0; background: #777973; mask: url('waveform.svg') center / 100% 100% no-repeat; -webkit-mask: url('waveform.svg') center / 100% 100% no-repeat; pointer-events: none; }
+    .waveform::after { content: ''; position: absolute; inset: 0; background: var(--text); clip-path: inset(0 calc(100% - var(--progress)) 0 0); }
+    input[type="range"] { position: relative; appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 44px; margin: 0; background: transparent; cursor: pointer; border-radius: 0; }
+    input[type="range"]::-webkit-slider-runnable-track { height: 44px; background: transparent; }
+    input[type="range"]::-moz-range-track { height: 44px; background: transparent; }
+    input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 2px; height: 44px; border: 0; border-radius: 0; background: var(--accent); }
+    input[type="range"]::-moz-range-thumb { width: 2px; height: 44px; border: 0; border-radius: 0; background: var(--accent); }
+    input:disabled { opacity: .5; }
+    .time { position: absolute; top: 48px; left: 0; right: 0; display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    #elapsed { color: var(--text); }
+    :focus-visible { outline: 1px solid var(--text); outline-offset: 5px; }
+    .status { margin: 12px 0 0; color: var(--muted); font-size: 11px; }
+    .status:empty { display: none; }
+    @media (max-width: 440px) { body { padding: 32px 20px; } .heading { margin: 0 0 20px; } .transport { gap: 12px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="heading"><h1>poliklinika</h1></div>
+    <img class="artwork" src="poliklinika.png" alt="Poliklinika cover: an archival newspaper photograph of a trolleybus in Vilnius." width="1600" height="1600">
+    <audio id="audio" controls preload="metadata" src="poliklinika.mp3">Your browser does not support audio. <a href="poliklinika.mp3">Listen to the song</a>.</audio>
+    <div class="player">
+      <div class="transport">
+        <button id="toggle" type="button" aria-label="Play Poliklinika">
+          <svg class="play-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3 17 10 5 17Z"/></svg>
+          <svg class="pause-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 3h4v14H4zM12 3h4v14h-4z"/></svg>
+        </button>
+        <div class="wave-column">
+        <div class="timeline">
+          <div class="waveform" aria-hidden="true"></div>
+          <input id="seek" type="range" min="0" max="0" step="0.1" value="0" aria-label="Playback position" disabled>
+        </div>
+        <div class="time"><span id="elapsed">0:00</span><span id="duration">—:—</span></div>
+        </div>
+        <button id="loop" type="button" aria-label="Loop song" aria-pressed="false" title="Loop off">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 3l4 4-4 4M21 7H7a4 4 0 0 0-4 4M7 21l-4-4 4-4M3 17h14a4 4 0 0 0 4-4"/></svg>
+        </button>
+      </div>
+      <p class="status" id="status" role="status"></p>
+    </div>
+  </main>
+  <script>
+    const audio = document.getElementById('audio');
+    const toggle = document.getElementById('toggle');
+    const loop = document.getElementById('loop');
+    const player = document.querySelector('.player');
+    loop.addEventListener('click', () => {
+      audio.loop = !audio.loop;
+      loop.setAttribute('aria-pressed', String(audio.loop));
+      loop.title = audio.loop ? 'Loop on' : 'Loop off';
+    });
+    const seek = document.getElementById('seek');
+    const elapsed = document.getElementById('elapsed');
+    const duration = document.getElementById('duration');
+    const status = document.getElementById('status');
+    const formatTime = seconds => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
+    function syncDuration() {
+      if (!Number.isFinite(audio.duration)) return;
+      duration.textContent = formatTime(audio.duration);
+      seek.max = audio.duration;
+      seek.disabled = false;
+    }
+    function syncPlayback() {
+      toggle.classList.toggle('playing', !audio.paused);
+      if (audio.paused || audio.ended) player.classList.remove('is-playing');
+      toggle.setAttribute('aria-label', audio.paused ? 'Play Poliklinika' : 'Pause Poliklinika');
+    }
+    toggle.addEventListener('click', async () => {
+      if (!audio.paused) { audio.pause(); return; }
+      status.textContent = 'Loading…';
+      try { await audio.play(); status.textContent = ''; }
+      catch { status.textContent = 'Unable to play. Please try again.'; }
+    });
+    audio.addEventListener('loadedmetadata', syncDuration);
+    audio.addEventListener('durationchange', syncDuration);
+    audio.addEventListener('timeupdate', () => {
+      seek.value = audio.currentTime;
+      elapsed.textContent = formatTime(audio.currentTime);
+      seek.parentElement.style.setProperty('--progress', `${audio.duration ? audio.currentTime / audio.duration * 100 : 0}%`);
+      seek.setAttribute('aria-valuetext', `${formatTime(audio.currentTime)} of ${formatTime(audio.duration || 0)}`);
+    });
+    seek.addEventListener('input', () => { audio.currentTime = Number(seek.value); });
+    for (const event of ['play', 'pause', 'ended']) audio.addEventListener(event, syncPlayback);
+    audio.addEventListener('waiting', () => { status.textContent = 'Loading…'; player.classList.remove('is-playing'); });
+    audio.addEventListener('playing', () => { status.textContent = ''; player.classList.add('is-playing'); });
+    audio.addEventListener('error', () => { status.textContent = 'The song could not load. Please refresh to try again.'; });
+    syncDuration();
+    document.documentElement.classList.add('enhanced');
+  </script>
+</body>
+</html>
