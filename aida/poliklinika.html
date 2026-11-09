@@ -24,16 +24,12 @@
     button { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 0; background: var(--accent); color: var(--ground); cursor: pointer; }
     button:hover { background: #f27652; }
     button svg { width: 20px; height: 20px; fill: currentColor; }
-    .waveform::before { content: ''; position: absolute; z-index: 1; inset: 0; background: linear-gradient(100deg, transparent 35%, #ffffff24 50%, transparent 65%); transform: translateX(-100%); opacity: 0; }
-    .is-playing .waveform::before { opacity: 1; animation: shimmer 4s linear infinite; }
-    @keyframes shimmer { to { transform: translateX(100%); } }
-    @media (prefers-reduced-motion: reduce) { .is-playing .waveform::before { animation: none; opacity: 0; } }
     .pause-icon, .playing .play-icon { display: none; }
     .playing .pause-icon { display: block; }
     .wave-column { flex: 1; min-width: 0; position: relative; }
     .timeline { position: relative; height: 44px; --progress: 0%; }
-    .waveform { overflow: hidden; position: absolute; inset: 0; background: #777973; mask: url('waveform.svg') center / 100% 100% no-repeat; -webkit-mask: url('waveform.svg') center / 100% 100% no-repeat; pointer-events: none; }
-    .waveform::after { content: ''; position: absolute; inset: 0; background: var(--text); clip-path: inset(0 calc(100% - var(--progress)) 0 0); }
+    .waveform { overflow: hidden; position: absolute; inset: 0; background: #555752; mask: url('waveform.svg?v=2') center / 100% 100% no-repeat; -webkit-mask: url('waveform.svg?v=2') center / 100% 100% no-repeat; pointer-events: none; }
+    .waveform::after { content: ''; position: absolute; inset: 0; background: var(--accent); clip-path: inset(0 calc(100% - var(--progress)) 0 0); }
     input[type="range"] { position: relative; appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 44px; margin: 0; background: transparent; cursor: pointer; border-radius: 0; }
     input[type="range"]::-webkit-slider-runnable-track { height: 44px; background: transparent; }
     input[type="range"]::-moz-range-track { height: 44px; background: transparent; }

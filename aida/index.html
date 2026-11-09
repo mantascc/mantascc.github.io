@@ -33,8 +33,8 @@
     .playing .pause-icon { display: block; }
     .wave-column { flex: 1; min-width: 0; position: relative; }
     .timeline { position: relative; height: 44px; --progress: 0%; }
-    .waveform { position: absolute; inset: 0; background: #777973; mask: var(--waveform) center / 100% 100% no-repeat; -webkit-mask: var(--waveform) center / 100% 100% no-repeat; pointer-events: none; }
-    .waveform::after { content: ''; position: absolute; inset: 0; background: var(--text); clip-path: inset(0 calc(100% - var(--progress)) 0 0); }
+    .waveform { position: absolute; inset: 0; background: #555752; mask: var(--waveform) center / 100% 100% no-repeat; -webkit-mask: var(--waveform) center / 100% 100% no-repeat; pointer-events: none; }
+    .waveform::after { content: ''; position: absolute; inset: 0; background: var(--accent); clip-path: inset(0 calc(100% - var(--progress)) 0 0); }
     input[type="range"] { position: relative; appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 44px; margin: 0; background: transparent; cursor: pointer; border-radius: 0; }
     input[type="range"]::-webkit-slider-runnable-track { height: 44px; background: transparent; }
     input[type="range"]::-moz-range-track { height: 44px; background: transparent; }
@@ -72,7 +72,7 @@
             </button>
             <div class="wave-column">
               <div class="timeline">
-                <div class="waveform" style="--waveform: url('garsas-waveform.svg')" aria-hidden="true"></div>
+                <div class="waveform" style="--waveform: url('garsas-waveform.svg?v=2')" aria-hidden="true"></div>
                 <input data-role="seek" type="range" min="0" max="0" step="0.1" value="0" aria-label="Playback position for 002 garsas" disabled>
               </div>
               <div class="time"><span data-role="elapsed">0:00</span><span data-role="duration">0:42</span></div>
@@ -95,7 +95,7 @@
             </button>
             <div class="wave-column">
               <div class="timeline">
-                <div class="waveform" style="--waveform: url('waveform.svg')" aria-hidden="true"></div>
+                <div class="waveform" style="--waveform: url('waveform.svg?v=2')" aria-hidden="true"></div>
                 <input data-role="seek" type="range" min="0" max="0" step="0.1" value="0" aria-label="Playback position for 001 poliklinika" disabled>
               </div>
               <div class="time"><span data-role="elapsed">0:00</span><span data-role="duration">0:45</span></div>
