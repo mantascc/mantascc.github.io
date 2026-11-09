@@ -33,7 +33,7 @@ def generate(source, destination):
         for i, height in enumerate(heights)
     )
     (ROOT / destination).write_text(
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 44" '
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="1 0 238 44" '
         f'preserveAspectRatio="none"><g fill="white">{bars}</g></svg>\n'
     )
     print(f'{destination}: {BAR_COUNT} bars, median height {median(heights):.1f}px')
