@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Sounds by Aida. Listen to Garsas and Poliklinika.">
+  <title>Aida — sounds</title>
+  <style>
+    :root { color-scheme: dark; --ground: #0a0a0a; --text: #e8e5de; --muted: #989994; --accent: #e65b35; font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--ground); color: var(--text); }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 72px 24px; }
+    main { width: min(100%, 680px); margin: 0 auto; }
+    header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 40px; }
+    h1 { margin: 0; font: 500 32px/1 Helvetica, Arial, sans-serif; letter-spacing: -.05em; }
+    header span { color: var(--muted); }
+    a { color: inherit; text-decoration: none; }
+    h2 a:hover { color: var(--accent); }
+    .track { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 28px; padding: 28px 0; border-top: 1px solid #252522; }
+    .cover { display: block; align-self: start; }
+    .cover img { display: block; width: 100%; height: auto; }
+    .track-body { min-width: 0; align-self: center; }
+    h2 { margin: 0 0 24px; font: 500 22px/1.2 Helvetica, Arial, sans-serif; letter-spacing: -.03em; }
+    audio { width: 100%; }
+    .player { display: none; }
+    .enhanced .player { display: block; }
+    .enhanced audio { display: none; }
+    .transport { display: flex; align-items: flex-start; gap: 16px; padding-bottom: 20px; }
+    button { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 0; background: var(--accent); color: var(--ground); cursor: pointer; }
+    button:hover { background: #f27652; }
+    button svg { width: 20px; height: 20px; fill: currentColor; }
+    .pause-icon, .playing .play-icon { display: none; }
+    .playing .pause-icon { display: block; }
+    .wave-column { flex: 1; min-width: 0; position: relative; }
+    .timeline { position: relative; height: 44px; --progress: 0%; }
+    .waveform { position: absolute; inset: 0; background: #777973; mask: var(--waveform) center / 100% 100% no-repeat; -webkit-mask: var(--waveform) center / 100% 100% no-repeat; pointer-events: none; }
+    .waveform::after { content: ''; position: absolute; inset: 0; background: var(--text); clip-path: inset(0 calc(100% - var(--progress)) 0 0); }
+    input[type="range"] { position: relative; appearance: none; -webkit-appearance: none; display: block; width: 100%; height: 44px; margin: 0; background: transparent; cursor: pointer; border-radius: 0; }
+    input[type="range"]::-webkit-slider-runnable-track { height: 44px; background: transparent; }
+    input[type="range"]::-moz-range-track { height: 44px; background: transparent; }
+    input[type="range"]::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 2px; height: 44px; border: 0; border-radius: 0; background: var(--accent); }
+    input[type="range"]::-moz-range-thumb { width: 2px; height: 44px; border: 0; border-radius: 0; background: var(--accent); }
+    input:disabled { opacity: .5; }
+    .time { position: absolute; top: 48px; left: 0; right: 0; display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; font-variant-numeric: tabular-nums; }
+    [data-role="elapsed"] { color: var(--text); }
+    :focus-visible { outline: 1px solid var(--text); outline-offset: 5px; }
+    .status { margin: 8px 0 0; color: var(--muted); font-size: 11px; }
+    .status:empty { display: none; }
+    @media (max-width: 520px) {
+      body { padding: calc(36px + env(safe-area-inset-top)) 20px 36px; }
+      header { margin-bottom: 28px; }
+      .track { grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 24px 0; }
+      h2 { font-size: 19px; margin-bottom: 16px; }
+      .transport { gap: 10px; }
+    }
+    @media (max-width: 350px) { .track { grid-template-columns: 72px minmax(0, 1fr); gap: 12px; } h2 { font-size: 17px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header><h1>aida</h1><span>sounds / 02</span></header>
+    <article class="track" data-track data-title="002 garsas" data-loop-src="garsas-loop.wav">
+      <a class="cover" href="garsas.html" aria-label="Open 002 garsas"><img src="garsas.png" alt="Garsas cinema in winter." width="1600" height="1600"></a>
+      <div class="track-body">
+        <h2><a href="garsas.html">002 garsas</a></h2>
+        <audio data-role="audio" controls loop preload="metadata" src="garsas.mp3"><a href="garsas.mp3">Listen to 002 garsas</a></audio>
+        <div class="player">
+          <div class="transport">
+            <button data-role="toggle" type="button" aria-label="Play 002 garsas">
+              <svg class="play-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3 17 10 5 17Z"/></svg>
+              <svg class="pause-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 3h4v14H4zM12 3h4v14h-4z"/></svg>
+            </button>
+            <div class="wave-column">
+              <div class="timeline">
+                <div class="waveform" style="--waveform: url('garsas-waveform.svg')" aria-hidden="true"></div>
+                <input data-role="seek" type="range" min="0" max="0" step="0.1" value="0" aria-label="Playback position for 002 garsas" disabled>
+              </div>
+              <div class="time"><span data-role="elapsed">0:00</span><span data-role="duration">0:42</span></div>
+            </div>
+          </div>
+          <p class="status" data-role="status" role="status"></p>
+        </div>
+      </div>
+    </article>
+    <article class="track" data-track data-title="001 poliklinika">
+      <a class="cover" href="poliklinika.html" aria-label="Open 001 poliklinika"><img src="poliklinika.png" alt="An archival newspaper photograph of a trolleybus in Vilnius." width="1600" height="1600"></a>
+      <div class="track-body">
+        <h2><a href="poliklinika.html">001 poliklinika</a></h2>
+        <audio data-role="audio" controls loop preload="metadata" src="poliklinika.mp3"><a href="poliklinika.mp3">Listen to 001 poliklinika</a></audio>
+        <div class="player">
+          <div class="transport">
+            <button data-role="toggle" type="button" aria-label="Play 001 poliklinika">
+              <svg class="play-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3 17 10 5 17Z"/></svg>
+              <svg class="pause-icon" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 3h4v14H4zM12 3h4v14h-4z"/></svg>
+            </button>
+            <div class="wave-column">
+              <div class="timeline">
+                <div class="waveform" style="--waveform: url('waveform.svg')" aria-hidden="true"></div>
+                <input data-role="seek" type="range" min="0" max="0" step="0.1" value="0" aria-label="Playback position for 001 poliklinika" disabled>
+              </div>
+              <div class="time"><span data-role="elapsed">0:00</span><span data-role="duration">0:45</span></div>
+            </div>
+          </div>
+          <p class="status" data-role="status" role="status"></p>
+        </div>
+      </div>
+    </article>
+  </main>
+  <script src="players.js" defer></script>
+</body>
+</html>

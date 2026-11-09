@@ -120,7 +120,7 @@ test('decoding failure is retryable', async () => {
 test('navigation and audio interruption reset playback state', async () => {
   const t = setup(); await t.click(); await t.window.dispatch('pagehide'); assert.equal(t.transport.paused, true);
   await t.click(); t.contexts[0].state = 'interrupted'; await t.contexts[0].dispatch('statechange');
-  assert.equal(t.transport.paused, true); assert.equal(t.elements.toggle.attributes['aria-label'], 'Play Poliklinika');
+  assert.equal(t.transport.paused, true); assert.equal(t.elements.toggle.attributes['aria-label'], 'Play 001 poliklinika');
   await t.click(); assert.equal(t.transport.paused, false);
 });
 test('native audio remains functional when Web Audio is unavailable', async () => {
@@ -139,7 +139,7 @@ test('interruption while loading cancels pending playback', async () => {
   t.contexts[0].state = 'interrupted'; await t.contexts[0].dispatch('statechange');
   release({ ok: true, arrayBuffer: async () => new ArrayBuffer(0) }); await pending;
   assert.equal(t.transport.paused, true); assert.equal(t.contexts[0].sources.length, 0);
-  assert.equal(t.elements.toggle.attributes['aria-label'], 'Play Poliklinika');
+  assert.equal(t.elements.toggle.attributes['aria-label'], 'Play 001 poliklinika');
   assert.equal(t.elements.status.textContent, '');
   await t.click(); assert.equal(t.transport.paused, false); assert.equal(t.contexts[0].sources.length, 1);
 });
