@@ -15,9 +15,9 @@
     :root{color-scheme:light;--paper:#f6f6f4;--ink:#121316;--muted:#5d6068;--rule:#d3d4d8;font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink)}
     *{box-sizing:border-box}body{margin:0;padding:0 28px}.wrap{max-width:1080px;margin:auto}a{color:inherit}a:focus-visible{outline:2px solid;outline-offset:6px}
     .mono{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase}
-    nav{display:flex;justify-content:space-between;padding:24px 0;border-bottom:1px solid var(--ink)}nav a{text-decoration:none}
+    nav{display:flex;justify-content:space-between;padding:24px 0;border-bottom:1px solid var(--ink)}nav a{text-decoration:none}nav.mono{text-transform:none;letter-spacing:0;gap:16px;flex-wrap:wrap}
     header{padding:44px 0 35px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}h1{font-size:clamp(90px,17vw,200px);font-weight:400;letter-spacing:-.075em;line-height:.85;margin:0 0 12px}header p{font-size:20px;line-height:1.5;max-width:260px;margin:0 0 8px}
-    .section-label{display:flex;justify-content:space-between;border-top:1px solid var(--ink);padding:16px 0;color:var(--muted)}
+    main{border-top:1px solid var(--ink);padding-top:46px}
     .feature{display:block;text-decoration:none}.hero{overflow:hidden;background:#080808}.hero img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;transition:transform .5s}.feature:hover img{transform:scale(1.015)}
     .entry{display:grid;grid-template-columns:1fr 2fr;gap:28px;padding:26px 0 48px;border-bottom:1px solid var(--ink)}.entry-meta{display:flex;flex-direction:column;gap:10px;color:var(--muted)}h2{font-weight:400;font-size:clamp(32px,5vw,55px);line-height:1.08;letter-spacing:-.035em;margin:0 0 18px}.excerpt{font-size:18px;line-height:1.6;max-width:570px;margin:0 0 24px}.read{display:inline-block;border-bottom:1px solid;padding-bottom:5px}.feature:hover h2{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
     footer{display:flex;justify-content:space-between;gap:20px;color:var(--muted);padding:24px 0 40px}footer a{text-decoration:none}
@@ -27,10 +27,9 @@
 </head>
 <body>
   <div class="wrap">
-    <nav class="mono" aria-label="Publication"><a href="/">mantas.cc</a><span>An editorial notebook</span></nav>
-    <header><h1>mintis</h1><p>Ideas, examined.<br>Questions worth following.</p></header>
+    <nav class="mono" aria-label="Publication"><a href="/mintis/">mantas.cc/mintis</a><time id="today" datetime="2026-11-10">November 10, 2026</time></nav>
+    <header><h1>mintis</h1></header>
     <main>
-      <div class="section-label mono"><span>The notebook</span><span>001 entry</span></div>
       <article>
         <a class="feature" href="memory-metals/">
           <div class="hero"><img src="assets/memory-metals.png" width="1536" height="1024" alt="A rough metallic stone, rendered in grainy black and white." fetchpriority="high"></div>
@@ -41,7 +40,23 @@
         </a>
       </article>
     </main>
-    <footer class="mono"><span>mintis · A notebook of ideas</span><a href="/">mantas.cc ↗</a></footer>
+    <footer class="mono"><span>© <span id="year">2026</span> mintis</span><a href="/">mantas.cc ↗</a></footer>
   </div>
+<script>
+    (() => {
+      function updateDate() {
+        const now = new Date();
+        const options = { timeZone: 'America/Los_Angeles', year: 'numeric', month: 'long', day: 'numeric' };
+        const date = document.getElementById('today');
+        date.textContent = new Intl.DateTimeFormat('en-US', options).format(now);
+        const parts = new Intl.DateTimeFormat('en-US', { ...options, month: '2-digit', day: '2-digit' }).formatToParts(now);
+        const part = type => parts.find(item => item.type === type).value;
+        date.dateTime = `${part('year')}-${part('month')}-${part('day')}`;
+        document.getElementById('year').textContent = part('year');
+      }
+      updateDate();
+      window.addEventListener('pageshow', updateDate);
+    })();
+  </script>
 </body>
 </html>

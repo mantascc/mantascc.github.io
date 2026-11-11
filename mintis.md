@@ -33,3 +33,20 @@ Use black and white, deliberate typography, fine rules, and generous space. Let 
 ## Review by subtraction
 
 Before publishing, ask: Does this element help someone understand, navigate, or control the story? Does the caption explain the discovery in the data? Can any repeated label or control be removed without losing meaning?
+
+
+## Make the masthead useful
+
+Show the publication’s address, `mantas.cc/mintis`, as a quiet link to its index. Use the other side of the masthead for the current date, formatted in natural language, such as “November 10, 2026.” Use the publication’s America/Los_Angeles timezone consistently. Keep the current masthead date distinct from each article’s fixed publication date.
+
+## Let the publication name stand alone
+
+The large mintis title does not need a slogan beside it. Remove generic editorial taglines and notebook labels when the title and content already establish the purpose.
+
+## Preserve space when removing labels
+
+Removing a section label or entry counter should not collapse the composition. Keep the divider and the breathing room before the hero image; express that space through layout rather than empty text or placeholder elements.
+
+## Keep the footer simple and current
+
+Use the current year and publication name, with a quiet link to the parent site. Avoid repeating the masthead’s description or adding another tagline. Update the year automatically.
