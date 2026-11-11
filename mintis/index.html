@@ -13,40 +13,38 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
   <style>
     :root{color-scheme:light;--paper:#f6f6f4;--ink:#121316;--muted:#5d6068;--rule:#d3d4d8;font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink)}
-    *{box-sizing:border-box}body{margin:0;padding:0 28px}.wrap{max-width:1080px;margin:auto}a{color:inherit}a:focus-visible{outline:2px solid;outline-offset:6px}
+    *{box-sizing:border-box}body{margin:0;padding:0 28px}.wrap{max-width:1080px;margin:auto;min-height:100vh;min-height:100svh;display:flex;flex-direction:column}a{color:inherit}a:focus-visible{outline:2px solid;outline-offset:6px}
     .mono{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase}
     nav{display:flex;justify-content:space-between;padding:24px 0;border-bottom:1px solid var(--ink)}nav a{text-decoration:none}nav.mono{text-transform:none;letter-spacing:0;gap:16px;flex-wrap:wrap}
-    header{padding:44px 0 35px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}h1{font-size:clamp(90px,17vw,200px);font-weight:400;letter-spacing:-.075em;line-height:.85;margin:0 0 12px}header p{font-size:20px;line-height:1.5;max-width:260px;margin:0 0 8px}
-    main{border-top:1px solid var(--ink);padding-top:46px}
+    main{padding-top:46px}
     .feature{display:block;text-decoration:none}.hero{overflow:hidden;background:#080808}.hero img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;transition:transform .5s}.feature:hover img{transform:scale(1.015)}
     .entry{display:grid;grid-template-columns:1fr 2fr;gap:28px;padding:26px 0 48px;border-bottom:1px solid var(--ink)}.entry-meta{display:flex;flex-direction:column;gap:10px;color:var(--muted)}h2{font-weight:400;font-size:clamp(32px,5vw,55px);line-height:1.08;letter-spacing:-.035em;margin:0 0 18px}.excerpt{font-size:18px;line-height:1.6;max-width:570px;margin:0 0 24px}.read{display:inline-block;border-bottom:1px solid;padding-bottom:5px}.feature:hover h2{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
-    footer{display:flex;justify-content:space-between;gap:20px;color:var(--muted);padding:24px 0 40px}footer a{text-decoration:none}
-    @media(max-width:600px){body{padding:0 18px}header{display:block;padding:36px 0 28px}header p{margin-top:24px;font-size:18px;max-width:100%}.entry{grid-template-columns:1fr;gap:22px}.entry-meta{flex-direction:row;justify-content:space-between}.excerpt{font-size:17px}footer{font-size:9px}}
+    footer{margin-top:auto;display:flex;justify-content:space-between;gap:20px;color:var(--muted);padding:24px 0 40px}footer a{text-decoration:none}
+    @media(max-width:600px){body{padding:0 18px}.entry{grid-template-columns:1fr;gap:22px}.entry-meta{flex-direction:row;justify-content:space-between}.excerpt{font-size:17px}footer{font-size:9px}}
     @media(prefers-reduced-motion:reduce){.hero img{transition:none}.feature:hover img{transform:none}}
+    .read:hover,.read:focus-visible{background:var(--ink);color:var(--paper);border-color:var(--ink)}
   .title-link,.read{text-decoration:none}.title-link:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
-    .walkthrough-banner{display:flex;flex-direction:column;gap:12px;max-width:230px;margin-top:20px;padding:16px;border:1px solid var(--rule);text-decoration:none;color:var(--ink);line-height:1.6;background:transparent}.walkthrough-banner svg{display:block;width:100%;height:84px}.walkthrough-banner:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
-    @media(max-width:600px){.entry-meta{flex-wrap:wrap}.walkthrough-banner{flex-basis:100%;margin-top:12px;width:100%;max-width:none;flex-direction:row;align-items:center;gap:18px}.walkthrough-banner svg{width:100px;flex:none}}
+    .walkthrough-banner{display:flex;flex-direction:column;gap:12px;max-width:230px;margin-top:20px;padding:16px;border:1px solid var(--rule);text-decoration:none;color:var(--ink);line-height:1.6;background:transparent}.walkthrough-banner > svg{display:block;width:100%;height:84px}.walkthrough-banner:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+    @media(max-width:600px){.entry-meta{flex-wrap:wrap}.walkthrough-banner{flex-basis:100%;margin-top:12px;width:100%;max-width:none;flex-direction:row;align-items:center;gap:18px}.walkthrough-banner > svg{width:100px;flex:none}}
   
-    .preview-trace{fill:none;stroke:currentColor;stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:0}.trace-back{opacity:.45}.preview-dot{fill:currentColor}.preview-bars rect{transform-box:fill-box;transform-origin:bottom}
-    .walkthrough-banner.is-animating .preview-trace{animation:preview-draw 4.8s ease-in-out both}.walkthrough-banner.is-animating .trace-front{animation-delay:.35s;animation-duration:4.45s}.walkthrough-banner.is-animating .preview-dot{animation:preview-reveal 4.8s ease both}.walkthrough-banner.is-animating .preview-bars rect{animation:preview-grow 4.8s ease both}
+    .preview-trace{fill:none;stroke:currentColor;stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:0}.trace-back{opacity:.45}
+    .walkthrough-banner.is-animating .preview-trace{animation:preview-draw 4.8s ease-in-out both}.walkthrough-banner.is-animating .trace-front{animation-delay:.35s;animation-duration:4.45s}
     @keyframes preview-draw{0%,8%{stroke-dashoffset:1}65%,100%{stroke-dashoffset:0}}
-    @keyframes preview-reveal{0%,45%{opacity:0}65%,100%{opacity:1}}
-    @keyframes preview-grow{0%,50%{transform:scaleY(.08);opacity:.15}80%,100%{transform:scaleY(1);opacity:1}}
-    @media(prefers-reduced-motion:reduce){.walkthrough-banner.is-animating .preview-trace,.walkthrough-banner.is-animating .preview-dot,.walkthrough-banner.is-animating .preview-bars rect{animation:none}}
+    @media(prefers-reduced-motion:reduce){.walkthrough-banner.is-animating .preview-trace{animation:none}}
+    .link-arrow{display:inline-block;width:12px;height:12px;margin-left:3px;vertical-align:-1px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter}
   </style>
 </head>
 <body>
   <div class="wrap">
     <nav class="mono" aria-label="Publication"><a href="/mintis/">mantas.cc/mintis</a><time id="today" datetime="2026-11-10">November 10, 2026</time></nav>
-    <header><h1>mintis</h1></header>
     <main>
       <article>
         <a class="feature" href="memory-metals/">
           <div class="hero"><img src="assets/memory-metals.png" width="1536" height="1024" alt="A rough metallic stone, rendered in grainy black and white." fetchpriority="high"></div>
         </a>
           <div class="entry">
-            <div class="entry-meta mono"><span>001 / Case file</span><time datetime="2026-11-04">4 November 2026</time><a class="walkthrough-banner" href="memory-metals/walkthrough/"><svg viewBox="0 0 200 90" aria-hidden="true"><g fill="none" stroke="currentColor" opacity=".16"><path d="M12 16H188M12 44H188M12 72H188M12 12V76"/></g><path class="preview-trace trace-back" pathLength="1" d="M12 72C40 72 40 20 84 20S148 12 188 12"/><path class="preview-trace trace-front" pathLength="1" d="M12 72C76 72 72 34 116 34S164 20 188 20"/><circle class="preview-dot dot-a" cx="84" cy="20" r="3"/><circle class="preview-dot dot-b" cx="116" cy="34" r="3"/><g class="preview-bars" fill="currentColor"><rect x="142" y="65" width="8" height="11"/><rect x="157" y="57" width="8" height="19"/><rect x="172" y="47" width="8" height="29"/></g></svg><span>Open walkthrough ↗</span></a></div>
-            <div><h2><a class="title-link" href="memory-metals/">The Memory Metals File</a></h2><p class="excerpt">Unusual alloys, the laboratories that made them, and the people who said they saw stranger metal. A case file tracing the records, the testimony, and what remains open.</p><a class="read mono" href="memory-metals/">Open case file ↗</a></div>
+            <div class="entry-meta mono"><span>001 / Case file</span><time datetime="2026-11-04">4 November 2026</time><a class="walkthrough-banner" href="memory-metals/walkthrough/"><svg viewBox="0 0 200 90" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width=".6" opacity=".18"><path d="M22 12H188M22 39H188M22 66H188"/></g><path d="M22 9V66H190" fill="none" stroke="currentColor" stroke-width=".8" opacity=".5"/><path class="preview-trace trace-back" pathLength="1" d="M22.00 65.98L24.07 65.98L26.15 65.97L28.23 65.96L30.30 65.95L32.38 65.94L34.45 65.92L36.52 65.90L38.60 65.87L40.67 65.83L42.75 65.78L44.83 65.72L46.90 65.64L48.98 65.54L51.05 65.41L53.12 65.24L55.20 65.03L57.27 64.76L59.35 64.42L61.42 63.98L63.50 63.44L65.58 62.76L67.65 61.90L69.72 60.85L71.80 59.56L73.88 58.01L75.95 56.15L78.03 53.97L80.10 51.48L82.17 48.68L84.25 45.61L86.33 42.36L88.40 39.00L90.47 35.64L92.55 32.39L94.62 29.32L96.70 26.52L98.78 24.03L100.85 21.85L102.92 19.99L105.00 18.44L107.08 17.15L109.15 16.10L111.22 15.24L113.30 14.56L115.38 14.02L117.45 13.58L119.53 13.24L121.60 12.97L123.67 12.76L125.75 12.59L127.83 12.46L129.90 12.36L131.97 12.28L134.05 12.22L136.12 12.17L138.20 12.13L140.28 12.10L142.35 12.08L144.43 12.06L146.50 12.05L148.57 12.04L150.65 12.03L152.72 12.02L154.80 12.02L156.88 12.01L158.95 12.01L161.03 12.01L163.10 12.01L165.18 12.01L167.25 12.00L169.32 12.00L171.40 12.00L173.47 12.00L175.55 12.00L177.62 12.00L179.70 12.00L181.78 12.00L183.85 12.00L185.93 12.00L188.00 12.00"/><path class="preview-trace trace-front" pathLength="1" d="M22.00 66.00L24.07 66.00L26.15 66.00L28.23 66.00L30.30 66.00L32.38 66.00L34.45 66.00L36.52 66.00L38.60 66.00L40.67 66.00L42.75 66.00L44.83 66.00L46.90 66.00L48.98 65.99L51.05 65.99L53.12 65.99L55.20 65.99L57.27 65.98L59.35 65.98L61.42 65.97L63.50 65.97L65.58 65.96L67.65 65.95L69.72 65.93L71.80 65.91L73.88 65.89L75.95 65.85L78.03 65.81L80.10 65.76L82.17 65.69L84.25 65.60L86.33 65.49L88.40 65.35L90.47 65.16L92.55 64.93L94.62 64.63L96.70 64.26L98.78 63.78L100.85 63.18L102.92 62.44L105.00 61.51L107.08 60.37L109.15 58.97L111.22 57.30L113.30 55.32L115.38 53.01L117.45 50.39L119.53 47.48L121.60 44.33L123.67 41.02L125.75 37.65L127.83 34.32L129.90 31.13L131.97 28.17L134.05 25.49L136.12 23.12L138.20 21.07L140.28 19.34L142.35 17.89L144.43 16.70L146.50 15.73L148.57 14.95L150.65 14.33L152.72 13.83L154.80 13.44L156.88 13.13L158.95 12.88L161.03 12.69L163.10 12.54L165.18 12.42L167.25 12.33L169.32 12.26L171.40 12.20L173.47 12.16L175.55 12.12L177.62 12.09L179.70 12.07L181.78 12.06L183.85 12.04L185.93 12.03L188.00 12.03"/><g fill="currentColor" font-family="IBM Plex Mono,monospace" font-size="7" letter-spacing="0" style="text-transform:none"><text x="18" y="15" text-anchor="end">1</text><text x="18" y="68" text-anchor="end">0</text><text x="105" y="82" text-anchor="middle">temperature</text><text x="10" y="39" text-anchor="middle" transform="rotate(-90 10 39)">phase</text><text x="40" y="24">cooling</text><text x="141" y="57">heating</text></g></svg><span>Open walkthrough <svg class="link-arrow" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 10L10 2M2 2H10V10"/></svg></span></a></div>
+            <div><h2><a class="title-link" href="memory-metals/">The Memory Metals File</a></h2><p class="excerpt">Unusual alloys, the laboratories that made them, and the people who said they saw stranger metal. A case file tracing the records, the testimony, and what remains open.</p><a class="read mono" href="memory-metals/">Open case file <svg class="link-arrow" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2 10L10 2M2 2H10V10"/></svg></a></div>
           </div>
       </article>
     </main>
@@ -67,7 +65,7 @@
       const banner = document.querySelector('.walkthrough-banner');
       const motion = matchMedia('(prefers-reduced-motion: reduce)');
       function animatePreview() {
-        if (motion.matches) return;
+        if (motion.matches || banner.matches(':hover, :focus')) return;
         banner.classList.remove('is-animating');
         void banner.offsetWidth;
         banner.classList.add('is-animating');
@@ -81,8 +79,11 @@
         }, { threshold: .6 });
         observer.observe(banner);
       } else animatePreview();
-      banner.addEventListener('pointerenter', animatePreview);
-      banner.addEventListener('focus', animatePreview);
+      function showCompletedPreview() {
+        banner.classList.remove('is-animating');
+      }
+      banner.addEventListener('pointerenter', showCompletedPreview);
+      banner.addEventListener('focus', showCompletedPreview);
       updateDate();
       window.addEventListener('pageshow', updateDate);
     })();
