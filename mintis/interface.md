@@ -1,6 +1,6 @@
-# mintis — Editorial design principles
+# mintis — Interface and editorial rules
 
-These principles come from the Memory Metals walkthrough review. Apply them to future mintis stories and data visualizations.
+Canonical interface and editorial rules for mantas.cc/mintis. Apply them to the index, stories, and walkthroughs. These consolidate the walkthrough review and subsequent page design decisions.
 
 ## Let the story lead
 
@@ -39,9 +39,9 @@ Before publishing, ask: Does this element help someone understand, navigate, or 
 
 Show the publication’s address, `mantas.cc/mintis`, as a quiet link to its index. Use the other side of the masthead for the current date, formatted in natural language, such as “November 10, 2026.” Use the publication’s America/Los_Angeles timezone consistently. Keep the current masthead date distinct from each article’s fixed publication date.
 
-## Let the publication name stand alone
+## Keep the index masthead compact
 
-The large mintis title does not need a slogan beside it. Remove generic editorial taglines and notebook labels when the title and content already establish the purpose.
+Omit the large mintis title section for now, including its surrounding space and extra divider. The address and current date provide the publication identity. Do not add generic editorial taglines or notebook labels.
 
 ## Preserve space when removing labels
 
@@ -49,4 +49,25 @@ Removing a section label or entry counter should not collapse the composition. K
 
 ## Keep the footer simple and current
 
-Use only the current year and publication name; omit the parent-site link. Avoid repeating the masthead’s description or adding another tagline. Update the year automatically.
+Use only the current year and publication name; omit the parent-site link. Avoid repeating the masthead’s description or adding another tagline. Update the year automatically. Push the footer to the bottom of the viewport when the content is short; let it flow below longer content without overlapping it. Use layout rather than fixed positioning.
+
+
+## Typography
+
+Use IBM Plex Mono for navigation, dates, metadata, controls, and the footer. Keep Source Serif 4 for the index article title and description. The JetBrains Mono trial was rejected; retain IBM Plex Mono. Preserve the distinct display typography already used in the Memory Metals article.
+
+On the index, use 11px monospace labels with .07em tracking and uppercase text. Navigation keeps natural casing and normal tracking. Use regular-weight serif article titles at 32–55px and descriptions at 18px on desktop, 17px on mobile.
+
+## Invert interactive links
+
+Use an inverted background and foreground on hover: `background: var(--ink)` and `color: var(--paper)`. Apply the same treatment on keyboard focus while retaining a visible focus outline. This applies to the walkthrough card, the “Open case file” link, and the article’s “← mintis” return link. Icons inherit the text color. Use theme variables so the inversion works in both light and dark themes; avoid layout shifts on interaction.
+
+## Link arrow glyphs
+
+Use geometric northeast SVG arrows for index calls to action: 12 × 12px with a true 2px stroke, a straight 45-degree diagonal, square line caps, and sharp miter joins. Use a matching 12 × 12 viewBox. Avoid curved or rounded arrow geometry. Mark decorative icons as hidden from assistive technology.
+
+## Walkthrough preview
+
+Use a meaningful schematic derived from the walkthrough’s subject. The Memory Metals preview shows heating and cooling transition curves with labeled axes, based on its hysteresis diagram. Do not add unrelated bars, dots, or arbitrary curves for decoration. Keep schematics distinct from measured data.
+
+Animate the preview once on entry into view. Hover or keyboard focus must immediately show the completed graph and must not restart the animation. Respect reduced-motion preferences by showing the final state without animation.
