@@ -49,4 +49,4 @@ Removing a section label or entry counter should not collapse the composition. K
 
 ## Keep the footer simple and current
 
-Use the current year and publication name, with a quiet link to the parent site. Avoid repeating the masthead’s description or adding another tagline. Update the year automatically.
+Use only the current year and publication name; omit the parent-site link. Avoid repeating the masthead’s description or adding another tagline. Update the year automatically.

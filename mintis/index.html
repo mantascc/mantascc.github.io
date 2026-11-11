@@ -23,6 +23,9 @@
     footer{display:flex;justify-content:space-between;gap:20px;color:var(--muted);padding:24px 0 40px}footer a{text-decoration:none}
     @media(max-width:600px){body{padding:0 18px}header{display:block;padding:36px 0 28px}header p{margin-top:24px;font-size:18px;max-width:100%}.entry{grid-template-columns:1fr;gap:22px}.entry-meta{flex-direction:row;justify-content:space-between}.excerpt{font-size:17px}footer{font-size:9px}}
     @media(prefers-reduced-motion:reduce){.hero img{transition:none}.feature:hover img{transform:none}}
+  .title-link,.read{text-decoration:none}.title-link:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+    .walkthrough-banner{display:flex;flex-direction:column;gap:12px;max-width:230px;margin-top:20px;padding:16px;border:1px solid var(--rule);text-decoration:none;color:var(--ink);line-height:1.6;background:#ececea}.walkthrough-banner svg{width:100%;height:50px}.walkthrough-banner:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+    @media(max-width:600px){.entry-meta{flex-wrap:wrap}.walkthrough-banner{flex-basis:100%;margin-top:12px;width:100%;max-width:none;flex-direction:row;align-items:center;gap:18px}.walkthrough-banner svg{width:100px;flex:none}}
   </style>
 </head>
 <body>
@@ -33,14 +36,14 @@
       <article>
         <a class="feature" href="memory-metals/">
           <div class="hero"><img src="assets/memory-metals.png" width="1536" height="1024" alt="A rough metallic stone, rendered in grainy black and white." fetchpriority="high"></div>
-          <div class="entry">
-            <div class="entry-meta mono"><span>001 / Case file</span><time datetime="2026-11-04">4 November 2026</time></div>
-            <div><h2>The Memory Metals File</h2><p class="excerpt">Unusual alloys, the laboratories that made them, and the people who said they saw stranger metal. A case file tracing the records, the testimony, and what remains open.</p><span class="read mono">Open the case file ↗</span></div>
-          </div>
         </a>
+          <div class="entry">
+            <div class="entry-meta mono"><span>001 / Case file</span><time datetime="2026-11-04">4 November 2026</time><a class="walkthrough-banner" href="memory-metals/walkthrough/"><svg viewBox="0 0 120 40" aria-hidden="true"><path d="M1 36H119M6 3V36" fill="none" stroke="currentColor" opacity=".3"/><path d="M6 32C35 32 36 8 64 8S90 4 116 4M6 34C55 34 53 16 79 16S105 8 116 8" fill="none" stroke="currentColor"/><path d="M91 23L101 28L91 33Z" fill="currentColor"/></svg><span>Watch the animated<br>walkthrough ↗</span></a></div>
+            <div><h2><a class="title-link" href="memory-metals/">The Memory Metals File</a></h2><p class="excerpt">Unusual alloys, the laboratories that made them, and the people who said they saw stranger metal. A case file tracing the records, the testimony, and what remains open.</p><a class="read mono" href="memory-metals/">Read the case file ↗</a></div>
+          </div>
       </article>
     </main>
-    <footer class="mono"><span>© <span id="year">2026</span> mintis</span><a href="/">mantas.cc ↗</a></footer>
+    <footer class="mono"><span>© <span id="year">2026</span> mintis</span></footer>
   </div>
 <script>
     (() => {
