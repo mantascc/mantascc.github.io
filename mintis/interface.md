@@ -60,7 +60,7 @@ On the index, use 11px monospace labels with .07em tracking and uppercase text. 
 
 ## Invert interactive links
 
-Use an inverted background and foreground on hover: `background: var(--ink)` and `color: var(--paper)`. Apply the same treatment on keyboard focus while retaining a visible focus outline. This applies to the walkthrough card, the “Open case file” link, and the article’s “← mintis” return link. Icons inherit the text color. Use theme variables so the inversion works in both light and dark themes; avoid layout shifts on interaction.
+Use an inverted background and foreground on hover: `background: var(--ink)` and `color: var(--paper)`. Apply the same treatment on keyboard focus while retaining a visible focus outline. This applies to the walkthrough card, the “Open case file” link, and every top-toolbar link on asset pages, including case files and walkthroughs (return links and cross-page links alike). Icons inherit the text color. Use theme variables so the inversion works in both light and dark themes; avoid layout shifts on interaction.
 
 ## Link arrow glyphs
 

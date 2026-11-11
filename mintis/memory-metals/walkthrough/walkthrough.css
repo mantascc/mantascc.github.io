@@ -2,3 +2,5 @@
 
 /* Keep playback secondary to the story. */
 .player{display:flex;gap:20px;padding:16px 0}.player button,.player #play{min-width:0;min-height:44px;padding:8px 0;background:transparent;color:var(--ink);border:0;font:12px var(--mono)}.player button:disabled{opacity:.35;cursor:default}.player button:not(:disabled):hover{text-decoration:underline;text-underline-offset:5px}
+
+.top a:hover,.top a:focus-visible{background:var(--ink);color:var(--paper)}
