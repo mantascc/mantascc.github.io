@@ -24,8 +24,15 @@
     @media(max-width:600px){body{padding:0 18px}header{display:block;padding:36px 0 28px}header p{margin-top:24px;font-size:18px;max-width:100%}.entry{grid-template-columns:1fr;gap:22px}.entry-meta{flex-direction:row;justify-content:space-between}.excerpt{font-size:17px}footer{font-size:9px}}
     @media(prefers-reduced-motion:reduce){.hero img{transition:none}.feature:hover img{transform:none}}
   .title-link,.read{text-decoration:none}.title-link:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
-    .walkthrough-banner{display:flex;flex-direction:column;gap:12px;max-width:230px;margin-top:20px;padding:16px;border:1px solid var(--rule);text-decoration:none;color:var(--ink);line-height:1.6;background:#ececea}.walkthrough-banner svg{width:100%;height:50px}.walkthrough-banner:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+    .walkthrough-banner{display:flex;flex-direction:column;gap:12px;max-width:230px;margin-top:20px;padding:16px;border:1px solid var(--rule);text-decoration:none;color:var(--ink);line-height:1.6;background:transparent}.walkthrough-banner svg{display:block;width:100%;height:84px}.walkthrough-banner:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
     @media(max-width:600px){.entry-meta{flex-wrap:wrap}.walkthrough-banner{flex-basis:100%;margin-top:12px;width:100%;max-width:none;flex-direction:row;align-items:center;gap:18px}.walkthrough-banner svg{width:100px;flex:none}}
+  
+    .preview-trace{fill:none;stroke:currentColor;stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:0}.trace-back{opacity:.45}.preview-dot{fill:currentColor}.preview-bars rect{transform-box:fill-box;transform-origin:bottom}
+    .walkthrough-banner.is-animating .preview-trace{animation:preview-draw 4.8s ease-in-out both}.walkthrough-banner.is-animating .trace-front{animation-delay:.35s;animation-duration:4.45s}.walkthrough-banner.is-animating .preview-dot{animation:preview-reveal 4.8s ease both}.walkthrough-banner.is-animating .preview-bars rect{animation:preview-grow 4.8s ease both}
+    @keyframes preview-draw{0%,8%{stroke-dashoffset:1}65%,100%{stroke-dashoffset:0}}
+    @keyframes preview-reveal{0%,45%{opacity:0}65%,100%{opacity:1}}
+    @keyframes preview-grow{0%,50%{transform:scaleY(.08);opacity:.15}80%,100%{transform:scaleY(1);opacity:1}}
+    @media(prefers-reduced-motion:reduce){.walkthrough-banner.is-animating .preview-trace,.walkthrough-banner.is-animating .preview-dot,.walkthrough-banner.is-animating .preview-bars rect{animation:none}}
   </style>
 </head>
 <body>
@@ -38,8 +45,8 @@
           <div class="hero"><img src="assets/memory-metals.png" width="1536" height="1024" alt="A rough metallic stone, rendered in grainy black and white." fetchpriority="high"></div>
         </a>
           <div class="entry">
-            <div class="entry-meta mono"><span>001 / Case file</span><time datetime="2026-11-04">4 November 2026</time><a class="walkthrough-banner" href="memory-metals/walkthrough/"><svg viewBox="0 0 120 40" aria-hidden="true"><path d="M1 36H119M6 3V36" fill="none" stroke="currentColor" opacity=".3"/><path d="M6 32C35 32 36 8 64 8S90 4 116 4M6 34C55 34 53 16 79 16S105 8 116 8" fill="none" stroke="currentColor"/><path d="M91 23L101 28L91 33Z" fill="currentColor"/></svg><span>Watch the animated<br>walkthrough ↗</span></a></div>
-            <div><h2><a class="title-link" href="memory-metals/">The Memory Metals File</a></h2><p class="excerpt">Unusual alloys, the laboratories that made them, and the people who said they saw stranger metal. A case file tracing the records, the testimony, and what remains open.</p><a class="read mono" href="memory-metals/">Read the case file ↗</a></div>
+            <div class="entry-meta mono"><span>001 / Case file</span><time datetime="2026-11-04">4 November 2026</time><a class="walkthrough-banner" href="memory-metals/walkthrough/"><svg viewBox="0 0 200 90" aria-hidden="true"><g fill="none" stroke="currentColor" opacity=".16"><path d="M12 16H188M12 44H188M12 72H188M12 12V76"/></g><path class="preview-trace trace-back" pathLength="1" d="M12 72C40 72 40 20 84 20S148 12 188 12"/><path class="preview-trace trace-front" pathLength="1" d="M12 72C76 72 72 34 116 34S164 20 188 20"/><circle class="preview-dot dot-a" cx="84" cy="20" r="3"/><circle class="preview-dot dot-b" cx="116" cy="34" r="3"/><g class="preview-bars" fill="currentColor"><rect x="142" y="65" width="8" height="11"/><rect x="157" y="57" width="8" height="19"/><rect x="172" y="47" width="8" height="29"/></g></svg><span>Open walkthrough ↗</span></a></div>
+            <div><h2><a class="title-link" href="memory-metals/">The Memory Metals File</a></h2><p class="excerpt">Unusual alloys, the laboratories that made them, and the people who said they saw stranger metal. A case file tracing the records, the testimony, and what remains open.</p><a class="read mono" href="memory-metals/">Open case file ↗</a></div>
           </div>
       </article>
     </main>
@@ -57,6 +64,25 @@
         date.dateTime = `${part('year')}-${part('month')}-${part('day')}`;
         document.getElementById('year').textContent = part('year');
       }
+      const banner = document.querySelector('.walkthrough-banner');
+      const motion = matchMedia('(prefers-reduced-motion: reduce)');
+      function animatePreview() {
+        if (motion.matches) return;
+        banner.classList.remove('is-animating');
+        void banner.offsetWidth;
+        banner.classList.add('is-animating');
+      }
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          if (entries.some(entry => entry.isIntersecting)) {
+            animatePreview();
+            observer.disconnect();
+          }
+        }, { threshold: .6 });
+        observer.observe(banner);
+      } else animatePreview();
+      banner.addEventListener('pointerenter', animatePreview);
+      banner.addEventListener('focus', animatePreview);
       updateDate();
       window.addEventListener('pageshow', updateDate);
     })();
