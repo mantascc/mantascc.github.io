@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101010">
+<meta name="description" content="Baimė — Žanetos Lilės audioknyga.">
+<title>Baimė — Žaneta Lilė</title>
+<style>
+:root { color-scheme: dark; background: #101010; color: #eee; font-family: Arial, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { min-height: 100svh; display: grid; place-items: center; padding: 24px; }
+.player { width: min(100%, 480px); }
+.cover { position: relative; width: 100%; aspect-ratio: 1; overflow: hidden; background: #000910; isolation: isolate; }
+.cover video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+.author { position: absolute; top: 7%; left: 30%; width: 40%; margin: 0; }
+.author img { display: block; width: 100%; height: auto; }
+h1 { position: absolute; left: 10%; width: 80%; bottom: 9%; margin: 0; line-height: 0; color: #ff291e; }
+h1 img { display: block; width: 100%; height: auto; }
+.controls { display: flex; align-items: center; gap: 14px; margin-top: 20px; height: 44px; }
+.toggle { flex: 0 0 44px; display: grid; place-items: center; width: 44px; height: 44px; padding: 12px; border: 1px solid #454545; border-radius: 50%; background: transparent; color: #eee; cursor: default; }
+.toggle:disabled, .seek:disabled { opacity: 1; }
+.toggle svg { width: 16px; height: 16px; fill: currentColor; }
+.toggle[data-playing="true"] .play, .toggle[data-playing="false"] .pause { display: none; }
+button:focus-visible, input:focus-visible { outline: 2px solid #eee; outline-offset: 5px; }
+time { color: #999; font-size: 11px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.seek { --progress: 0%; flex: 1; min-width: 0; height: 24px; margin: 0; appearance: none; background: transparent; cursor: default; }
+.seek::-webkit-slider-runnable-track { height: 2px; background: linear-gradient(to right, #ddd var(--progress), #404040 var(--progress)); }
+.seek::-webkit-slider-thumb { appearance: none; width: 8px; height: 8px; margin-top: -3px; border-radius: 50%; background: #ddd; }
+.seek::-moz-range-track { height: 2px; background: #404040; }
+.seek::-moz-range-progress { height: 2px; background: #ddd; }
+.seek::-moz-range-thumb { width: 8px; height: 8px; border: 0; border-radius: 50%; background: #ddd; }
+</style>
+</head>
+<body>
+<main>
+<div class="player">
+<section class="cover" aria-label="Baimė, Žaneta Lilė">
+<video autoplay muted loop playsinline preload="auto" poster="111026-baime-assets/baime-house-night-v3.png" aria-label="Namo šviesos animacija">
+<source src="111026-baime-assets/baime-house-light-loop-v2.mp4" type="video/mp4">
+</video>
+<p class="author"><img src="111026-baime-assets/author-zaneta-lile.svg" alt="Žaneta Lilė" width="370" height="98"></p>
+<h1><img src="111026-baime-assets/title-baime.svg" alt="Baimė" width="752" height="342"></h1>
+</section>
+<div class="controls" role="group" aria-label="Audioknygos grotuvo maketas">
+<button class="toggle" type="button" data-playing="false" disabled aria-label="Paleisti audioknygą (maketas)">
+<svg viewBox="0 0 16 16" aria-hidden="true"><path class="pause" d="M3 2h3v12H3zm7 0h3v12h-3z"/><path class="play" d="m4 2 10 6-10 6z"/></svg>
+</button>
+<time class="elapsed">0:00</time>
+<input class="seek" type="range" min="0" max="7500" step="1" value="0" disabled aria-label="Audioknygos laikas (maketas)">
+<time class="duration">2:05:00</time>
+</div>
+</div>
+</main>
+<script>
+const video = document.querySelector('video');
+const preference = matchMedia('(prefers-reduced-motion: reduce)');
+function updateMotion() {
+  video.autoplay = !preference.matches;
+  if (preference.matches) video.pause();
+  else { video.muted = true; video.play().catch(() => {}); }
+}
+preference.addEventListener('change', updateMotion);
+updateMotion();
+</script>
+</body>
+</html>
