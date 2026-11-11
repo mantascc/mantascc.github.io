@@ -25,7 +25,7 @@
     .read:hover,.read:focus-visible{background:var(--ink);color:var(--paper);border-color:var(--ink)}
   .title-link,.read{text-decoration:none}.title-link:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
     .walkthrough-banner{display:flex;flex-direction:column;gap:12px;max-width:230px;margin-top:20px;padding:16px;border:1px solid var(--rule);text-decoration:none;color:var(--ink);line-height:1.6;background:transparent}.walkthrough-banner > svg{display:block;width:100%;height:84px}.walkthrough-banner:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
-    @media(max-width:600px){.entry-meta{flex-wrap:wrap}.walkthrough-banner{flex-basis:100%;margin-top:12px;width:100%;max-width:none;flex-direction:row;align-items:center;gap:18px}.walkthrough-banner > svg{width:100px;flex:none}}
+    @media(max-width:600px){.entry-meta{flex-wrap:wrap}.walkthrough-banner{flex-basis:100%;margin-top:12px;width:100%;max-width:none;flex-direction:column;align-items:stretch;gap:14px}.walkthrough-banner > svg{width:100%;height:auto;aspect-ratio:200/90;flex:none}}
   
     .preview-trace{fill:none;stroke:currentColor;stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:0}.trace-back{opacity:.45}
     .walkthrough-banner.is-animating .preview-trace{animation:preview-draw 4.8s ease-in-out both}.walkthrough-banner.is-animating .trace-front{animation-delay:.35s;animation-duration:4.45s}
