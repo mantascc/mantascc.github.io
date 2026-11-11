@@ -45,5 +45,5 @@ function run(){cancelAnimationFrame(frame);last=0;if(playing)frame=requestAnimat
 function seek(value){time=Math.max(0,Math.min(90,value));last=0;render();}
 $('play').onclick=()=>{if(time===90)time=0;playing=true;run()};$('pause').onclick=()=>{playing=false;run()};
 document.addEventListener('keydown',e=>{if(/INPUT|SELECT|BUTTON|A|TEXTAREA/.test(e.target.tagName)||e.altKey||e.metaKey||e.ctrlKey)return;if(e.code==='Space'){e.preventDefault();$(playing?'pause':'play').click()}if(e.code==='ArrowRight'){e.preventDefault();seek(Math.min(8,active+1)*10)}if(e.code==='ArrowLeft'){e.preventDefault();seek(Math.max(0,active-1)*10)}});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing){playing=false;run()}});reduced.addEventListener('change',render);render();
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&playing){playing=false;run()}});reduced.addEventListener('change',render);playing=true;run();
 })();
