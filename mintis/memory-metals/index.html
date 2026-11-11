@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Memory Metals File — mintis</title>
+<meta name="description" content="A case file on unusual alloys, laboratories, testimony and the questions that remain open.">
+<link rel="canonical" href="https://mantas.cc/mintis/memory-metals/">
+<meta property="og:title" content="The Memory Metals File — mintis">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://mantas.cc/mintis/assets/memory-metals.png">
+<meta property="article:published_time" content="2026-11-04">
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: a single reading column of case-file prose, punctuated by full-width monochrome "plates" (figures) drawn as line-and-dot data graphics. Every claim carries a glyph that says what kind of claim it is. */
+:root{
+  --paper:#F6F6F4; --ink:#121316; --muted:#5D6068; --rule:#D3D4D8; --wash:#ECECEA; --signal:#121316;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0F1012;--ink:#E9E9E6;--muted:#9A9DA4;--rule:#2C2E33;--wash:#17181B;--signal:#E9E9E6;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0F1012;--ink:#E9E9E6;--muted:#9A9DA4;--rule:#2C2E33;--wash:#17181B;--signal:#E9E9E6;color-scheme:dark}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.62;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:1080px;margin:0 auto}
+.col{max-width:680px}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+header.mast{padding-block:56px 32px;border-bottom:1px solid var(--ink);display:grid;gap:20px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:900;font-size:clamp(56px,11vw,132px);line-height:.86;letter-spacing:-.01em;margin:0;text-transform:uppercase;text-wrap:balance}
+.dek{font-size:21px;line-height:1.45;max-width:640px;margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;padding-block:20px;border-bottom:1px solid var(--rule)}
+.legend .tag{font-size:12px}
+.legend p{flex-basis:100%;margin:4px 0 0;font-size:15px;color:var(--muted);max-width:680px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--ink);padding:1px 7px;border-radius:2px;white-space:nowrap;vertical-align:2px;line-height:1.6}
+.tag svg{width:10px;height:10px;flex:none}
+.tag.th{border-style:dashed}
+.tag.an{background:var(--ink);color:var(--paper)}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 22px;padding-block:18px;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:13px}
+nav.toc a{text-decoration:none;color:var(--muted)}
+nav.toc a:hover{color:var(--ink)}
+nav.toc b{color:var(--ink);font-weight:500;margin-right:6px}
+section{padding-block:56px 8px;border-bottom:1px solid var(--rule)}
+section>.head{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:baseline;margin-bottom:22px}
+.num{font-family:var(--display);font-weight:700;font-size:28px;color:var(--muted)}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(36px,6vw,56px);line-height:.95;text-transform:uppercase;margin:0;text-wrap:balance}
+h3{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:.01em;text-transform:uppercase;margin:36px 0 8px}
+p{margin:0 0 16px}
+.claim{margin:0 0 16px}
+.claim .tag{margin-right:8px}
+sup a{font-family:var(--mono);font-size:11px;text-decoration:none;color:var(--muted);padding:0 1px}
+sup a:hover{color:var(--ink)}
+figure.plate{margin:40px 0;border-top:2px solid var(--ink);padding-top:12px}
+.plate-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.plate-head span:first-child{font-weight:500}
+.plate-head span:last-child{color:var(--muted)}
+.svgbox{overflow-x:auto}
+.svgbox svg{display:block;width:100%;height:auto;min-width:560px;color:var(--ink)}
+figcaption{font-size:15px;color:var(--muted);max-width:680px;margin-top:10px;line-height:1.5}
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:28px 40px}
+.duo figure.plate{margin:28px 0}
+.duo .svgbox svg{min-width:0}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:620px}
+.tbl{overflow-x:auto;margin:24px 0}
+th,td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-bottom:1px solid var(--rule)}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;border-bottom:1px solid var(--ink)}
+td:first-child{font-weight:600}
+.note{border:1px solid var(--ink);padding:18px 20px;margin:28px 0;max-width:680px;background:var(--wash)}
+.note h4{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin:0 0 10px;font-weight:500}
+.note p,.note li{font-size:16px}
+.note ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.case{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:8px 28px;padding-block:22px;border-top:1px solid var(--rule)}
+.case:first-of-type{border-top:1px solid var(--ink)}
+.case .who{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.05;text-transform:uppercase}
+.case .who small{display:block;font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.06em;color:var(--muted);margin-top:6px;text-transform:uppercase;line-height:1.5}
+.case p:last-child{margin-bottom:0}
+@media (max-width:640px){.case{grid-template-columns:1fr}body{font-size:17px}}
+ol.sources{font-size:14px;line-height:1.5;padding-left:28px;columns:2 340px;column-gap:40px;margin-top:20px}
+ol.sources li{break-inside:avoid;margin-bottom:8px;color:var(--muted)}
+ol.sources li a{color:var(--ink)}
+ol.sources li:target{background:var(--wash);outline:1px solid var(--ink)}
+footer{padding-block:28px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+/* svg styling */
+.svgbox .ln{stroke:currentColor;fill:none}
+.svgbox .mu{stroke:var(--muted);fill:none}
+.svgbox .rl{stroke:var(--rule);fill:none}
+.svgbox .dot{fill:currentColor}
+.svgbox .hol{fill:var(--paper);stroke:currentColor}
+.svgbox text{fill:currentColor;font-family:var(--mono);font-size:11px}
+.svgbox text.m{fill:var(--muted)}
+.svgbox text.big{font-family:var(--display);font-weight:700;font-size:20px}
+.svgbox .pap{fill:var(--paper)}
+.svgbox .inkf{fill:currentColor}
+
+body{margin:0}
+.publication-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12px}
+.publication-nav a{text-decoration:none}
+.case-hero{margin:32px 0 24px}
+.case-hero img{display:block;width:100%;height:auto;background:#080808}
+.case-hero figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="g-doc" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" fill="currentColor"/></symbol>
+    <symbol id="g-off" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="1" y="1" width="4" height="8" fill="currentColor"/></symbol>
+    <symbol id="g-tes" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="currentColor"/></symbol>
+    <symbol id="g-sec" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.6" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+    <symbol id="g-the" viewBox="0 0 10 10"><path d="M5 1 L9.2 9 H0.8 Z" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+    <symbol id="g-ana" viewBox="0 0 10 10"><path d="M5 0.8 L9.2 5 L5 9.2 L0.8 5 Z" fill="currentColor"/></symbol>
+    <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="currentColor" stroke-width="1.2"/></pattern>
+    <pattern id="dots" width="5" height="5" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r="0.9" fill="currentColor"/></pattern>
+  </defs>
+</svg>
+
+<div class="wrap">
+<nav class="publication-nav" aria-label="Publication"><a href="../">← mintis</a><a href="/">mantas.cc</a></nav>
+<main>
+
+<header class="mast">
+  <div class="eyebrow">Case file 001 · <time datetime="2026-11-04">4 November 2026</time></div>
+  <h1>The Memory Metals File</h1>
+  <p class="dek">Unusual alloys, the labs and companies that made them, the people who said they saw stranger metal, the engineers who talk about exotic propulsion, and the UAP disclosure push of 2026. Every claim below is labeled by what kind of claim it is. No source, official or not, gets the last word by default.</p>
+</header>
+<figure class="case-hero"><img src="../assets/memory-metals.png" width="1536" height="1024" alt="Grainy black-and-white illustration of a rough metallic stone against black." fetchpriority="high"><figcaption>Memory metals · Editorial illustration</figcaption></figure>
+
+<div class="legend" aria-label="Claim labels">
+  <span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>
+  <span class="tag"><svg><use href="#g-off"/></svg>Official position</span>
+  <span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>
+  <span class="tag"><svg><use href="#g-sec"/></svg>Secondhand</span>
+  <span class="tag th"><svg><use href="#g-the"/></svg>Theory</span>
+  <span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>
+  <p><b>Documented</b>: a record exists (paper, patent, declassified file, transcript, court filing). <b>Official position</b>: what an agency says happened or concluded. <b>Testimony</b>: what a named person said, and where. <b>Secondhand</b>: reported by someone else, often after the person died. <b>Theory</b>: a connection researchers propose. <b>Analysis</b>: comparisons made for this file.</p>
+</div>
+
+<nav class="toc" aria-label="Contents">
+  <a href="#alloys"><b>01</b>Metals that misbehave</a>
+  <a href="#nitinol"><b>02</b>The Nitinol question</a>
+  <a href="#institutions"><b>03</b>Who was equipped</a>
+  <a href="#accounts"><b>04</b>The accounts</a>
+  <a href="#engineers"><b>05</b>Engineers on propulsion</a>
+  <a href="#disclosure"><b>06</b>Pilots and the 2026 push</a>
+  <a href="#nolan"><b>07</b>Nolan's samples</a>
+  <a href="#complexity"><b>08</b>Complexity compared</a>
+  <a href="#cases"><b>09</b>The missing and the dead</a>
+  <a href="#open"><b>10</b>What remains open</a>
+  <a href="#sources"><b>§</b>Sources</a>
+</nav>
+
+<!-- 01 -->
+<section id="alloys">
+  <div class="head"><span class="num">01</span><h2>Metals that misbehave</h2></div>
+  <div class="col">
+    <p>Some alloys do things a metal is not supposed to do. They spring back to a remembered shape, stretch in a magnetic field, hold five elements in one crystal, or set like glass. Each one came out of a specific lab, a specific search and usually a specific accident. This is the baseline the rest of the file measures against.</p>
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>Material</th><th>What it does</th><th>Where and how</th><th>Elements</th></tr></thead>
+    <tbody>
+      <tr><td>Nitinol</td><td>Shape memory, superelasticity</td><td>Naval Ordnance Laboratory, White Oak. Alloy screening for a missile nose cone, 1959 to 1962<sup><a href="#s1">1</a></sup></td><td>Ni, Ti</td></tr>
+      <tr><td>Terfenol-D</td><td>Changes length in a magnetic field, strongly</td><td>Naval Ordnance Laboratory, 1970s, Navy sonar work</td><td>Tb, Dy, Fe</td></tr>
+      <tr><td>Galfenol</td><td>Magnetostrictive and machinable</td><td>Navy research, late 1990s</td><td>Ga, Fe</td></tr>
+      <tr><td>Cantor alloy</td><td>Five metals in equal parts form one simple crystal</td><td>Brian Cantor's multi-element melts, published 2004</td><td>Fe, Cr, Mn, Ni, Co</td></tr>
+      <tr><td>Vitreloy</td><td>Bulk metallic glass, no crystal grains</td><td>Caltech, 1992, building on Pol Duwez's 1960 splat-quenched glass</td><td>Zr, Ti, Cu, Ni, Be</td></tr>
+      <tr><td>Mondaloy</td><td>Strong and does not burn in hot, high-pressure oxygen</td><td>Rocketdyne with Rockwell Science Center, mid-1990s; later co-developed with AFRL<sup><a href="#s42">42</a><a href="#s44">44</a></sup></td><td>Nickel base, several additions</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="duo">
+    <figure class="plate">
+      <div class="plate-head"><span>Plate 01 · Nitinol</span><span>Heating vs cooling</span></div>
+      <div class="svgbox" id="p-hyst"></div>
+      <figcaption>The shape returns on heating and is lost on cooling at a lower temperature. The gap between the two curves is hysteresis. Insets: the high-temperature cubic cell (austenite) and the sheared low-temperature form (martensite). Illustrative shape.</figcaption>
+    </figure>
+    <figure class="plate">
+      <div class="plate-head"><span>Plate 02 · Terfenol-D, Galfenol</span><span>Strain in a field, log scale</span></div>
+      <div class="svgbox" id="p-magneto"></div>
+      <figcaption>Approximate maximum magnetostrictive strain in parts per million. Pure iron barely moves; the Navy alloys move one to two orders of magnitude more. Commonly cited values, rounded.</figcaption>
+    </figure>
+    <figure class="plate">
+      <div class="plate-head"><span>Plate 03 · Cantor alloy</span><span>5 × 20 at.%</span></div>
+      <div class="svgbox" id="p-cantor"></div>
+      <figcaption>Five principal elements at 20 atomic percent each. Instead of a brittle mixture of phases, the melt settles into a single face-centered cubic crystal. Each mark style is one element, placed at random on one shared lattice.</figcaption>
+    </figure>
+    <figure class="plate">
+      <div class="plate-head"><span>Plate 04 · Vitreloy</span><span>Crystal vs glass</span></div>
+      <div class="svgbox" id="p-glass"></div>
+      <figcaption>Left, an ordinary crystal. Right, five elements of very different atomic sizes jam each other while cooling and freeze before they can line up. No grains, so no grain boundaries to fail along.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- 02 -->
+<section id="nitinol">
+  <div class="head"><span class="num">02</span><h2>The Nitinol question</h2></div>
+  <div class="col">
+    <p>Nitinol has two histories. One runs through a Navy lab notebook. The other starts in a New Mexico field in 1947 and runs through two Ohio companies. They are told here in date order, then read against each other.</p>
+
+    <h3>1947: Where "memory metal" comes from</h3>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>From the late 1970s onward, people who said they handled the 1947 Roswell debris, or saw it handled, described thin foil-like metal that could be crumpled and would spring back flat without a crease. Jesse Marcel Jr., who was 11 when his father brought debris home, is the best known of these witnesses. Their accounts were recorded decades after the event.<sup><a href="#s63">63</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-off"/></svg>Official position</span>The US Air Force's 1994 report concluded the debris came from Project Mogul, a classified balloon train for detecting Soviet nuclear tests. Its 1997 follow-up attributed accounts of bodies to anthropomorphic test dummies used in later high-altitude drops.<sup><a href="#s61">61</a><a href="#s62">62</a></sup></p>
+    <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>Every Nitinol and Battelle theory rests on these witness descriptions. If the foil accounts are set aside, the theory has no physical starting point.</p>
+
+    <h3>1948 to 1954: Two metallurgists</h3>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Battelle did hold an Air Force contract, AF 33(038)-3736, for titanium alloy research in the late 1940s, and copies of one of its progress reports could not be produced by either Battelle or the Air Force when requested.<sup><a href="#s11">11</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-sec"/></svg>Secondhand</span>At Battelle, chemist Elroy John Center (on staff 1939 to 1957) is the source of the best-known story, and it reaches us through other people. A man who dated Center's daughter in 1958 says Center told them he had analyzed fragments of a crashed craft while at Battelle. Former Battelle and DIA employee Irena Scott relayed the account to Ohio MUFON, published in 1992.<sup><a href="#s18">18</a><a href="#s19">19</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Center is a co-author, listed under "and others", of the late-1940s Battelle titanium report. His section deals with measuring impurities such as oxygen in titanium.<sup><a href="#s19">19</a></sup></p>
+    <p class="claim"><span class="tag th"><svg><use href="#g-the"/></svg>Theory</span>Oxygen control in titanium is also the central problem in making Nitinol, which supporters read as a link. It is equally the central problem in making any titanium alloy.</p>
+    <p class="claim"><span class="tag"><svg><use href="#g-sec"/></svg>Secondhand</span>A Goodyear Aircraft engineer and metallurgist in Akron, known in the family as "Babe", told relatives at a July 1954 birthday party that he had made trips to Wright-Patterson to examine metal from a disc that crashed near Roswell. One metal was nearly impossible to cut or melt; the other was a thin foil that, when crumpled, slowly returned to its shape with a mirror finish. His nephew, eight at the time, wrote it down; researcher Dennis Balthaser published it in 2013.<sup><a href="#s81">81</a></sup></p>
+
+    <h3>1958 to 1962: The laboratory record</h3>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>In 1958 William J. Buehler, a metallurgist at the Naval Ordnance Laboratory, joined a project to find metals for the nose cone of the Navy's Polaris reentry vehicle. He named the nickel-titanium alloy NITINOL in 1959. The memory effect showed up at a lab meeting when an associate heated a folded strip with his pipe lighter and it stretched back out. Frederick Wang joined in 1962 and worked out the crystal mechanism.<sup><a href="#s1">1</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Nickel-titanium was not new territory. Wang's own 1972 NOL report traces the first study of the Ti-Ni system to Wallbaum and co-workers in 1938, followed by other work in 1949 and 1951.<sup><a href="#s3">3</a></sup> Shape-changing transformations had been seen in gold-cadmium as early as 1932, and the field itself credits Buehler with spotting the effect in NiTi while noting he was not the first to work with that alloy.<sup><a href="#s5">5</a></sup></p>
+
+    <h3>Was the "golden ratio" too hard to hit in 1959?</h3>
+    <p>The earlier research thread argued that the 1:1 atomic ratio was nearly impossible to reach with 1959 equipment, which makes the discovery look suspicious. The documents point a different way.</p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>NOL made two named alloys, 55-Nitinol and 60-Nitinol, named for their nickel weight percent. The near-stoichiometric 55-Nitinol was the one with the memory effect.<sup><a href="#s4">4</a></sup> 55 percent nickel by weight is almost exactly 50 percent by atoms, so a round number on a scale lands you near 1:1.</p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>The effect is not confined to a knife-edge. Industry specifies binary nitinol across roughly 54.5 to 57 weight percent nickel<sup><a href="#s6">6</a></sup>, and composition mainly moves the <em>temperature</em> at which the shape change happens. Titanium lost to oxygen or carbon shifts the composition and lowers that temperature.<sup><a href="#s2">2</a></sup> What was hard in 1959 was controlling the trigger temperature from batch to batch, which is why commercial use took years.</p>
+  </div>
+
+  <figure class="plate">
+    <div class="plate-head"><span>Plate 05 · Nitinol composition</span><span>Weight % shown with atomic %</span></div>
+    <div class="svgbox" id="p-comp"></div>
+    <figcaption>Top axis: nickel in weight percent, as NOL named its alloys. Bottom axis: the same composition in atomic percent. The band is the industry range for binary nitinol. The curve shows the direction of the effect (nickel-rich alloys transform colder), not measured values. Small ticks: the kind of composition series a 1950s screening program would cast.</figcaption>
+  </figure>
+
+  <div class="col">
+    <h3>Reading the two histories together</h3>
+    <p class="claim"><span class="tag th"><svg><use href="#g-the"/></svg>Theory</span>Researcher Anthony Bragalia argues that soon after Roswell, Wright-Patterson contracted Battelle Memorial Institute for first-of-its-kind titanium alloy work, that later Air Force memory-metal studies cited a 1949 Battelle report, and that Battelle steered Nitinol's development after NOL announced it. In this reading, Nitinol is a public, terrestrial reconstruction of recovered "memory metal".<sup><a href="#s9">9</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-sec"/></svg>Secondhand</span>Bragalia reports that Frederick Wang answered "no comment" when asked about a Battelle connection, and that Brig. Gen. Arthur Exon described Roswell debris including specially processed titanium.<sup><a href="#s9">9</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Two decades later both companies reappear in the Nitinol record. Goodyear Aerospace ran NASA's Nitinol characterization study with Battelle processing the alloy rod, and Battelle wrote NASA's 1972 review of 55-Nitinol.<sup><a href="#s7">7</a><a href="#s8">8</a></sup></p>
+    <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>Battelle and Goodyear are the two companies named in Roswell metal stories, and both turn up again, on the public record, in Nitinol work two decades later. That is a coincidence of names worth noting. It is not evidence that one led to the other.</p>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Critics, including the skeptic newsletter SUNlite, call the chain speculative: the late-1940s titanium work was part of a broad postwar push on titanium, and no document ties the contract to crash debris.<sup><a href="#s10">10</a></sup></p>
+    <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>The composition argument above does not show outside help either way. It removes one pillar the theory was standing on, without ruling the theory out.</p>
+    <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>Put plainly: the paper trail supports Battelle and Goodyear working on titanium and later on Nitinol, and it supports witnesses describing foil that sprang back. Nothing on the record connects the two.</p>
+  </div>
+</section>
+
+<!-- 03 -->
+<section id="institutions">
+  <div class="head"><span class="num">03</span><h2>Who was equipped</h2></div>
+  <div class="col">
+    <p>If recovered material existed, someone would have needed the capability to store it, analyze it and try to copy it, under secrecy. This section lists who had those capabilities on the record. Capability is not evidence of participation.</p>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Institution</th><th>Capability on the record</th><th>Link to the UAP question</th></tr></thead>
+    <tbody>
+      <tr><td>Wright-Patterson AFB, AFRL, NASIC</td><td>Air Force materials research; foreign materiel exploitation of captured aircraft and missiles</td><td><span class="tag"><svg><use href="#g-doc"/></svg>Doc</span> Home of Projects Sign, Grudge, Blue Book. <span class="tag th"><svg><use href="#g-the"/></svg>Theory</span> Alleged Roswell debris site ("Hangar 18")</td></tr>
+      <tr><td>Battelle Memorial Institute</td><td>Postwar titanium metallurgy for the Air Force; later Nitinol work for NASA<sup><a href="#s7">7</a><a href="#s11">11</a></sup></td><td><span class="tag th"><svg><use href="#g-the"/></svg>Theory</span> Analyzed crash metal (Center account)</td></tr>
+      <tr><td>Goodyear Aircraft / Aerospace</td><td>Akron airframes and airships; led NASA's Nitinol characterization study<sup><a href="#s8">8</a></sup></td><td><span class="tag"><svg><use href="#g-sec"/></svg>2nd-hand</span> Metallurgist examined Roswell metal (family account)</td></tr>
+      <tr><td>Naval Ordnance Laboratory</td><td>Mines, fuzes, magnetics, materials; Nitinol, Terfenol-D</td><td><span class="tag th"><svg><use href="#g-the"/></svg>Theory</span> Endpoint of the Nitinol theory</td></tr>
+      <tr><td>National labs: Oak Ridge, Los Alamos, Sandia</td><td>Isotopic and structural analysis; nuclear weapons work under Restricted Data</td><td><span class="tag"><svg><use href="#g-off"/></svg>Official</span> Analyzed a claimed UAP fragment for AARO, found it terrestrial<sup><a href="#s15">15</a></sup></td></tr>
+      <tr><td>Lockheed Skunk Works</td><td>Unacknowledged aircraft programs; stealth materials</td><td><span class="tag"><svg><use href="#g-sec"/></svg>2nd-hand</span> Ben Rich remarks (section 04)</td></tr>
+      <tr><td>DIA (AAWSAP / AATIP), DHS</td><td>Intelligence-funded UAP study 2009 to 2012</td><td><span class="tag"><svg><use href="#g-doc"/></svg>Doc</span> Kona Blue proposal (below)</td></tr>
+      <tr><td>Bigelow Aerospace (BAASS)</td><td>Prime contractor for DIA's AAWSAP study, Las Vegas, 2008 to 2010</td><td><span class="tag"><svg><use href="#g-doc"/></svg>Doc</span> Contract. <span class="tag th"><svg><use href="#g-the"/></svg>Theory</span> Stored UAP alloys (disputed, below)<sup><a href="#s64">64</a></sup></td></tr>
+    </tbody>
+  </table></div>
+
+  <figure class="plate">
+    <div class="plate-head"><span>Plate 06 · The proposed network</span><span>Solid: on the record · Dashed: alleged</span></div>
+    <div class="svgbox" id="p-network"></div>
+    <figcaption>Solid lines are relationships with a document behind them. Dashed lines are relationships people allege or theorize. The dashed web is the "hidden network" hypothesis; the solid web is what can be checked today.</figcaption>
+  </figure>
+
+  <div class="col">
+    <h3>The Las Vegas alloys</h3>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>In December 2017 the <em>New York Times</em> revealed the Pentagon's AATIP study and reported that Bigelow Aerospace had modified buildings in Las Vegas to store metal alloys that Luis Elizondo and program contractors said came from UAP.<sup><a href="#s64">64</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Robert Bigelow later told George Knapp "we never had any" material. Co-author Ralph Blumenthal described a compound scientists did not recognize on MSNBC in 2017, then said in 2020 that no materials were ever put in the warehouse. Co-author Leslie Kean says the article claimed only that buildings were modified.<sup><a href="#s64">64</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>In 2018 To The Stars Academy, Tom DeLonge's company, paid about $35,000 for "metamaterials" said to come from a craft. That is the magnesium, zinc and bismuth specimen the Army and Oak Ridge later tested for AARO and found terrestrial.<sup><a href="#s65">65</a><a href="#s15">15</a></sup></p>
+
+    <h3>Kona Blue</h3>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Kona Blue was a Department of Homeland Security Prospective Special Access Program, marked unacknowledged and waived. Its backers came from the DIA program AAWSAP/AATIP after DIA cancelled it, and the proposal described protecting the retrieval and exploitation of "non-human biologics" and related technology.<sup><a href="#s12">12</a><a href="#s13">13</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>DHS's Under Secretary for Science and Technology approved it as a prospective SAP in 2011. About six months later the DHS Deputy Secretary disapproved it as a SAP and ordered it terminated, citing the adequacy of its justification. It ended on 10 February 2012.<sup><a href="#s13">13</a><a href="#s14">14</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-off"/></svg>Official position</span>AARO says Kona Blue never received materials or funding and no data or material was transferred to DHS under it.<sup><a href="#s12">12</a></sup></p>
+    <p class="claim"><span class="tag th"><svg><use href="#g-the"/></svg>Theory</span>Advocates read the file the other way: the proposal's authors expected material to be handed over once the program existed, which implies they believed a legacy holder existed somewhere. James Lacatski, who designed the DIA program the proposal grew out of, says that at a 2011 Capitol meeting, the same year as Kona Blue, it was stated that the US has a craft of unknown origin and has accessed its interior. David Grusch and others say AARO never got access to the compartments they describe.<sup><a href="#s16">16</a><a href="#s67">67</a></sup></p>
+  </div>
+</section>
+
+<!-- 04 -->
+<section id="accounts">
+  <div class="head"><span class="num">04</span><h2>The accounts</h2></div>
+
+  <div class="col">
+    <p>Five people stand at very different distances from the evidence: a memo, a phone call, a deathbed interview, a podcast, a sworn complaint. They are ordered by the year of the events they describe.</p>
+  </div>
+  <div class="case">
+    <div class="who">Eric A. Walker<small>Penn State president · Research and Development Board · IDA chairman</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>The trail starts with a real document. On 21 November 1950 Canadian engineer Wilbert Smith wrote a Top Secret memo recording that Sarbacher had told him the US considered flying saucers real and that a group led by Vannevar Bush was studying them under a classification higher than the hydrogen bomb. The memo was downgraded in 1969. It says nothing about debris or about Walker.<sup><a href="#s66">66</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-sec"/></svg>Secondhand</span>Researcher William Steinman says that in an August 1987 phone call, written up shortly after, Walker said he knew of MJ-12, had known of the group since 1947, had attended Wright-Patterson meetings on recovered craft, and told Steinman to leave it alone. Walker's name first surfaced through physicist Robert Sarbacher's description of who attended such meetings.<sup><a href="#s17">17</a></sup></p>
+      <p>No recording or statement in Walker's own hand is known. The MJ-12 documents themselves are widely considered fabrications.</p>
+    </div>
+  </div>
+  <div class="case">
+    <div class="who">Harald Malmgren<small>Trade negotiator · Institute for Defense Analyses analyst · d. 2025</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>In a 2025 interview on <em>American Alchemy</em>, recorded from a hospital bed shortly before his death, Malmgren said he handled pieces of an object knocked down during the Bluegill Triple Prime nuclear test on 26 October 1962. He said the Navy recovered the debris, a man he named as Larry Gees showed him samples at Los Alamos, and CIA official Richard Bissell briefed him on recovery programs. He described the material as heavy and strangely inert.<sup><a href="#s82">82</a><a href="#s83">83</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Researcher Douglas Dean Johnson found records showing Malmgren was an economics analyst at the Institute for Defense Analyses from 1962 to 1964. His signed 1971 security form lists a 1962 top secret clearance but no Atomic Energy Commission clearance, and no archive shows the White House roles he described. His later post as deputy trade representative, with ambassador rank, is confirmed. Johnson calls the UFO claims fabrications.<sup><a href="#s84">84</a></sup></p>
+      <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>His is the only account here that describes being shown material by someone from another program. It is also the most thoroughly contested.</p>
+    </div>
+  </div>
+  <div class="case">
+    <div class="who">Ben Rich<small>Director, Lockheed Skunk Works, 1975 to 1991</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-sec"/></svg>Secondhand</span>The famous lines come from Jan Harzan, later MUFON's director, who attended Rich's UCLA engineering alumni talk on 23 March 1993. Harzan says Rich closed with a joke about a contract to "take E.T. home", then told a small group afterward that "we now know how to travel to the stars", that there was an error in the equations, and answered a question about propulsion by asking how ESP works.<sup><a href="#s20">20</a></sup></p>
+      <p>No recording of the talk is known. Writer Peter Brookesmith argues the line began as a joke and grew into a myth through retelling.<sup><a href="#s21">21</a></sup> The widely shared "locked up in black projects" wording does not trace cleanly to a primary source.</p>
+    </div>
+  </div>
+  <div class="case">
+    <div class="who">James Lacatski<small>DIA rocket scientist · designed AAWSAP, 2008</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>In October 2023 Lacatski confirmed on the WEAPONIZED podcast that his co-authored book describes an exact event: at a 2011 meeting in the Capitol with a senator and an agency under secretary, it was stated that the US has a craft of unknown origin and has accessed its interior. Asked whether he went inside himself, he said "I can't answer that."<sup><a href="#s67">67</a></sup></p>
+      <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>Lacatski is the architect of the program whose backers proposed Kona Blue the same year, which makes him the closest first-hand voice to that file.</p>
+    </div>
+  </div>
+  <div class="case">
+    <div class="who">David Grusch<small>Former Air Force and NGA intelligence officer · UAP Task Force</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>In interviews and before Congress, Grusch has said the US holds intact and partially intact craft of non-human origin, that some recoveries included dead pilots, and that a materials recovery program has run for decades with contractor involvement.<sup><a href="#s68">68</a><a href="#s22">22</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>In July 2022 the Intelligence Community Inspector General found his complaint "credible and urgent". The finding concerned his allegation that information was being withheld from Congress, not whether the craft exist.<sup><a href="#s68">68</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Under oath in July 2023, Grusch said his claims rest on information from people with long service records, many of whom showed him photos, documents and classified oral testimony, and that UAP programs operate beyond congressional oversight.<sup><a href="#s22">22</a></sup> He co-founded the Sol Foundation with Garry Nolan.<sup><a href="#s41">41</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-off"/></svg>Official position</span>AARO's 2024 historical report found no evidence that the US government has reverse-engineered extraterrestrial technology, and the office maintains it has found no evidence any UAP report involves it.<sup><a href="#s25">25</a><a href="#s30">30</a></sup></p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 -->
+<section id="engineers">
+  <div class="head"><span class="num">05</span><h2>Engineers on propulsion</h2></div>
+  <div class="col">
+    <p>Engineers and physicists who talk about exotic propulsion range from senior NASA researchers to men whose evidence fell apart. They are grouped here by how much of their own record can be checked.</p>
+  </div>
+  <div class="case">
+    <div class="who">Paul R. Hill<small>NACA / NASA Langley, 1939 to 1970</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Hill retired as associate chief of Langley's Applied Materials and Physics Division after work on ramjets, hypersonic tunnels and space stations. His book <em>Unconventional Flying Objects: A Scientific Analysis</em> was rejected by publishers in his lifetime and appeared in 1995, five years after his death.<sup><a href="#s69">69</a></sup></p>
+      <p class="claim"><span class="tag th"><svg><use href="#g-the"/></svg>Theory</span>Hill argued that UFO reports not explained as mundane objects show consistent performance that fits known physics, and he favored the extraterrestrial explanation. Physicist Hal Puthoff reviewed the book favorably.<sup><a href="#s69">69</a><a href="#s70">70</a></sup></p>
+    </div>
+  </div>
+  <div class="case">
+    <div class="who">Robert M. Wood<small>Douglas / McDonnell Douglas, 1956 to 1993</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Wood spent 43 years in research and development at Douglas and McDonnell Douglas, including missile defense radar and, from 1983, management of a highly classified intelligence program.<sup><a href="#s71">71</a></sup></p>
+      <p class="claim"><span class="tag th"><svg><use href="#g-the"/></svg>Theory</span>In a 1991 paper he argued that if gravity could be controlled, interstellar travel times would shrink enough to make the extraterrestrial explanation reasonable, and he graphed trip times under constant acceleration. He later became a leading defender of the MJ-12 documents.<sup><a href="#s71">71</a></sup></p>
+    </div>
+  </div>
+  <div class="case">
+    <div class="who">Bill Uhouse<small>Claimed Wright-Patterson flight test engineer · d. 2009</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>In a 2000 Disclosure Project statement Uhouse said he worked on simulators for flying discs after Marine Corps service and Air Force civilian flight testing, linked to the simulator maker Link Aviation.<sup><a href="#s72">72</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>His identity and Marine Corps service have been confirmed from newspapers and muster rolls. His Wright-Patterson work and the disc simulators have not.<sup><a href="#s72">72</a></sup></p>
+    </div>
+  </div>
+  <div class="case">
+    <div class="who">Boyd Bushman<small>Lockheed senior engineer · d. 2014</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>In a video recorded before his death and posted in October 2014, Bushman described antigravity work and aliens held at Area 51.<sup><a href="#s73">73</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>The alien photo he offered matches a toy sold at Walmart. The Black Vault rates the case a hoax.<sup><a href="#s73">73</a><a href="#s74">74</a></sup></p>
+    </div>
+  </div>
+  <div class="case">
+    <div class="who">The podcast circuit<small>Lazar · Puthoff · Davis · Buehler · Orojima, 2019 to 2026</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Bob Lazar told Joe Rogan in 2019 that he worked on craft using gravity amplification and an element 115 fuel. Physicists Hal Puthoff and Eric Davis, both of AAWSAP and AATIP, discuss zero-point energy, metamaterials and crash-retrieval physics across many shows, including Rogan in 2025.<sup><a href="#s76">76</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>In August 2026 Charles Buehler, an electrostatics researcher at NASA Kennedy with no known relation to Nitinol's William Buehler, and propulsion engineer Andrew Orojima said on the Danny Jones Podcast that their electrostatic device produces about 50 millinewtons of thrust without propellant. They describe it as mainstream physics, not antigravity, and say it has not yet been peer reviewed.<sup><a href="#s75">75</a></sup></p>
+    </div>
+  </div>
+  <div class="col">
+    <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>No metallurgist has spoken about UAP material on the record in their own name. Both metallurgist stories in this file, Center at Battelle and the Goodyear engineer, reach us secondhand. The one metallurgist here with a public interview, Monica Reza, talked about Mondaloy. The closest first-hand voices on material are Nolan's lab, the chemists behind the Ubatuba paper, and Oak Ridge.<sup><a href="#s43">43</a></sup></p>
+  </div>
+</section>
+
+<!-- 06 -->
+<section id="disclosure">
+  <div class="head"><span class="num">06</span><h2>Pilots and the 2026 push</h2></div>
+  <div class="col">
+    <p>The modern case rests less on debris than on trained observers and military sensors. Navy aviators are at the center of it.</p>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Retired Navy Commander David Fravor told Congress in 2023 about the 2004 "Tic Tac" off Southern California: four aircrew watched a white object for about five minutes, and when he tried to cut it off it accelerated so fast it seemed to vanish. He says radar had tracked objects dropping 80,000 feet in under a second. Alex Dietrich, who flew the second jet, described the same encounter in a 2021 <em>60 Minutes</em> interview.<sup><a href="#s23">23</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Former F/A-18F pilot Ryan Graves says his squadron off Virginia Beach tracked UAP in military airspace, that two Super Hornets were once split by one, and that encounters were routine. His estimate that pilots report only about 5 percent of sightings is, in his words, a personal estimate.<sup><a href="#s24">24</a><a href="#s26">26</a><a href="#s27">27</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Retired Rear Admiral Tim Gallaudet told a November 2024 hearing that he became convinced in January 2015, while commanding Navy Meteorology and Oceanography Command, during an East Coast exercise.<sup><a href="#s28">28</a></sup> In 2025 an active-duty Navy senior chief, Alexandro Wiggins, testified in his personal capacity about his own sighting.<sup><a href="#s29">29</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>In November 2026 Graves said the 2026 releases are mostly short infrared clips, not the high-end sensor data pilots rely on, and leave more ambiguity.<sup><a href="#s26">26</a></sup></p>
+  </div>
+
+  <figure class="plate">
+    <div class="plate-head"><span>Plate 07 · Disclosure timeline</span><span>2004 to 2026</span></div>
+    <div class="svgbox" id="p-timeline"></div>
+    <figcaption>Each event is marked with its claim type. The cluster on the right is the current administration's disclosure program.</figcaption>
+  </figure>
+
+  <div class="col">
+    <h3>What the administration has done</h3>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>On 19 February 2026 President Trump said he would direct the Secretary of War and other agencies to identify and release files on UAP and extraterrestrial life.<sup><a href="#s30">30</a></sup> In late February the Pentagon's disclosure indicated AARO's caseload had passed 2,000 reports, up from about 1,600 in late 2024.<sup><a href="#s31">31</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>The Presidential Unsealing and Reporting System for UAP Encounters (PURSUE) published its first tranche on 8 May 2026 at war.gov/UFO, followed by releases on 22 May, 12 June, 10 July, 7 August, 18 September and a seventh in late October.<sup><a href="#s32">32</a><a href="#s33">33</a><a href="#s35">35</a></sup> The first release included an infrared still from a US military system showing unidentified objects in September 2025.<sup><a href="#s33">33</a></sup> The seventh included, inside a redacted contractor report, an affidavit matching the one attributed to Roswell press officer Walter Haut, who said he saw a metallic egg-shaped object and two small bodies in a hangar.<sup><a href="#s80">80</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>ODNI issued guidance letting current and former staff disclose UAP information to designated officials despite prior non-disclosure agreements, and on 14 September the government announced a legal waiver for disclosures to PURSUE.<sup><a href="#s34">34</a><a href="#s35">35</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>A UAP Governance Board met for the first time on 17 June 2026. It is advised by a UAP Science Advisory Council chaired by Harvard's Avi Loeb, whose members include Garry Nolan and the skeptic Michael Shermer. The council has no budget beyond travel.<sup><a href="#s36">36</a><a href="#s37">37</a><a href="#s41">41</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>In February 2026 Christopher Mellon noted that AARO had not released the second volume of its congressionally mandated historical report.<sup><a href="#s30">30</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>In September AARO moved to buy access to the largest private archive of UAP records, held by the New Mexico nonprofit NUFOHRC.<sup><a href="#s79">79</a></sup> In October former UAP Task Force director Jay Stratton published <em>Out of the Shadows</em>.<sup><a href="#s38">38</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Also in October, Rep. Eric Burlison said lawmakers want another public hearing with intelligence witnesses.<sup><a href="#s38">38</a></sup></p>
+  </div>
+</section>
+
+<!-- 06 -->
+<section id="nolan">
+  <div class="head"><span class="num">07</span><h2>Nolan's samples</h2></div>
+  <div class="col">
+    <p>Garry Nolan, a Stanford pathology professor who builds mass-spectrometry and imaging tools, is the scientist most closely tied to analyzing alleged UAP debris. His claims sit at different levels of proof, so they are split here.</p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>In 2022 Nolan, Jacques Vallée, Sizun Jiang and Larry Lemke published a peer-reviewed methods paper in <em>Progress in Aerospace Sciences</em>. Its case study, a sample from a 1977 event in Council Bluffs, Iowa, turned out to be mostly iron with isotopically ordinary elements, mixed in an unusual way, and most similar to terrestrial carbon steel. The authors raised the possibility that it was discarded fuel from an aerial vehicle.<sup><a href="#s39">39</a><a href="#s40">40</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Nolan says that of 10 to 12 fragments he has examined, almost none are uniform, and two "seem to be not playing by our rules" because their isotope ratios are altered.<sup><a href="#s45">45</a></sup> He says one piece of the 1957 Ubatuba, Brazil, material had magnesium ratios far from Earth-normal when compared with a control under identical conditions, and that another Ubatuba piece is silicon at about 99.999 percent purity.<sup><a href="#s46">46</a><a href="#s47">47</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-sec"/></svg>Secondhand</span>Nolan relays a calculation by colleagues that his odd magnesium ratios could be produced from normal magnesium only by about 900 years of neutron exposure at extreme intensity.<sup><a href="#s46">46</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>A separate peer-reviewed study of a Ubatuba magnesium fragment (Powell, Swords, Rodeghier and Budinger, 2022) found its magnesium isotope ratios within terrestrial limits, trace-element results inconclusive, and one oddity: very pure magnesium with a strontium impurity not used in magnesium manufacturing at the time.<sup><a href="#s48">48</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-off"/></svg>Official position</span>For a different claimed fragment, a layered magnesium, zinc and bismuth piece, AARO and Oak Ridge found terrestrial isotopes and structures consistent with mid-century magnesium alloy work.<sup><a href="#s15">15</a></sup></p>
+    <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>The two Ubatuba results are not necessarily in conflict. They may describe different fragments of the same event. Nolan's anomalous numbers have been described in interviews and talks, including new results at the Sol Forum in July 2026, but this file found no peer-reviewed publication of the off-normal values themselves.<sup><a href="#s49">49</a></sup></p>
+  </div>
+
+  <figure class="plate">
+    <div class="plate-head"><span>Plate 08 · Magnesium isotopes</span><span>²⁴Mg · ²⁵Mg · ²⁶Mg</span></div>
+    <div class="svgbox" id="p-iso"></div>
+    <figcaption>Earth's magnesium is about 79 / 10 / 11 percent across its three stable isotopes. The Powell study's fragment falls inside that. Nolan's reported anomalous fragment is drawn hatched because its values have not been published.</figcaption>
+  </figure>
+</section>
+
+<!-- 07 -->
+<section id="complexity">
+  <div class="head"><span class="num">08</span><h2>Complexity compared</h2></div>
+  <div class="col">
+    <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>Put the alleged samples next to alloys humans have built and a pattern shows. By elements and by structure, the alleged samples are simpler than the engineered alloys: one or two dominant elements, or an iron-based mix. Cantor's alloy and Vitreloy combine five principal elements with tight process control. Where the alleged samples claim to be strange is a different axis entirely: isotopes.</p>
+    <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>Humans do separate isotopes at industrial scale, mainly for nuclear fuel, but rarely for structural metals because it is expensive and changes almost nothing mechanically. That is why an isotope anomaly in a plain metal would matter: it would point to a maker with very different priorities. It is also why it needs published, replicated numbers before it can carry weight.</p>
+  </div>
+  <figure class="plate">
+    <div class="plate-head"><span>Plate 09 · Complexity matrix</span><span>Filled = more demanding</span></div>
+    <div class="svgbox" id="p-matrix"></div>
+    <figcaption>Element count is factual. Process control and structural novelty are this file's ratings on a 0 to 3 scale. "Isotope anomaly" is marked open where none is claimed, half where claimed but unpublished, and filled where published and confirmed (no sample qualifies).</figcaption>
+  </figure>
+</section>
+
+<!-- 08 -->
+<section id="cases">
+  <div class="head"><span class="num">09</span><h2>The missing and the dead</h2></div>
+  <div class="col">
+    <p>Since 2025 a series of deaths and disappearances among people tied to aerospace and nuclear research has drawn national attention. These are real people with families still waiting for answers, so each case is stated narrowly.</p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>The FBI says it is "spearheading the effort to look for connections" among missing and deceased scientists, working with the Departments of Energy and War.<sup><a href="#s50">50</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Rep. Eric Burlison has called a foreign intelligence operation the most likely explanation.<sup><a href="#s51">51</a></sup> No agency has publicly confirmed a link between any of the cases.</p>
+  </div>
+
+  <div class="case">
+    <div class="who">Monica Jacinto Reza<small>Metallurgist · Mondaloy co-inventor · missing since 22 June 2025</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Co-invented Mondaloy at Rocketdyne in the mid-1990s; collaborated with AFRL from 1999 to scale it up; named on three patent applications for burn-resistant alloys. Mondaloy 200 was later co-developed with the AFRL Materials Directorate for oxygen-rich rocket engines.<sup><a href="#s42">42</a><a href="#s43">43</a><a href="#s44">44</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Went missing while hiking near Mount Waterman in Angeles National Forest. The Sheriff's Homicide Bureau missing persons unit handles the case.<sup><a href="#s52">52</a></sup> She remains missing.</p>
+    </div>
+  </div>
+  <div class="case">
+    <div class="who">William "Neil" McCasland<small>Retired Maj. Gen. · former AFRL commander · missing since 27 Feb 2026</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Left his Albuquerque home on foot around 11 a.m. His phone and glasses stayed behind; his hiking boots, wallet and a .38 revolver were missing. A Silver Alert cited unspecified medical issues; the FBI and Kirtland AFB assisted.<sup><a href="#s53">53</a><a href="#s54">54</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>His wife, Susan McCasland Wilkerson, says he briefly worked as an unpaid consultant for Tom DeLonge's fiction and media projects after retiring, and that he had no special knowledge of alleged Roswell bodies or debris at Wright-Patterson.<sup><a href="#s55">55</a></sup></p>
+    </div>
+  </div>
+  <div class="case">
+    <div class="who">Melissa Casias<small>Administrative assistant, Los Alamos · missing 26 June 2025 · found May 2026</small></div>
+    <div>
+      <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>A hiker found her remains on 28 May 2026 in Carson National Forest. A handgun was found nearby. At last report the cause and manner of death had not been determined.<sup><a href="#s56">56</a><a href="#s57">57</a></sup></p>
+      <p class="claim"><span class="tag"><svg><use href="#g-tes"/></svg>Testimony</span>Her family rejects suicide and says the area had already been searched.<sup><a href="#s57">57</a><a href="#s58">58</a></sup></p>
+    </div>
+  </div>
+  <div class="col">
+    <p class="claim" style="margin-top:20px"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Others named in the reporting include Anthony Chavez, a retired Los Alamos construction foreman missing since May 2025; Steven Garcia, a contractor at a New Mexico site of the Kansas City National Security Campus, missing since August 2025; and Amy Eskridge, co-founder of the Institute for Exotic Science in Huntsville, which worked on antigravity research, who died in 2022, reportedly by suicide.<sup><a href="#s51">51</a><a href="#s78">78</a></sup></p>
+    <p class="claim"><span class="tag"><svg><use href="#g-doc"/></svg>Documented</span>Caltech astrophysicist Carl Grillmair also appears on online lists. A suspect is charged with his murder in what prosecutors describe as a carjacking spree, and he had no defense or materials connection, so he is left out here.<sup><a href="#s59">59</a></sup></p>
+    <p class="claim"><span class="tag an"><svg><use href="#g-ana"/></svg>Analysis</span>Only Reza has a direct alloy connection, and Eskridge the closest connection to exotic propulsion. McCasland is linked to Reza through AFRL's oversight of the Mondaloy funding period, not through shared work. Casias, Chavez and Garcia connect at the level of institutions.</p>
+  </div>
+</section>
+
+<!-- 09 -->
+<section id="open">
+  <div class="head"><span class="num">10</span><h2>What remains open</h2></div>
+  <div class="col">
+    <p>The record now holds more than it did a year ago: thousands of official reports, seven PURSUE releases, an Inspector General finding that a whistleblower's complaint was credible, a waiver for people bound by NDAs, a government science council, and a peer-reviewed toolkit for testing debris. It still holds no published, replicated physical sample that cannot be explained as terrestrial.</p>
+    <p>Three questions would settle a lot:</p>
+    <ul style="margin:0 0 16px;padding-left:22px;display:grid;gap:8px">
+      <li>Will Nolan's anomalous isotope values be published with methods and an independent replication?</li>
+      <li>Will anyone use the NDA waiver to give first-hand testimony about recovered material, under oath?</li>
+      <li>Will AARO's Volume II of the historical report, if and when it appears, name the compartments whistleblowers describe, or say it looked and found nothing?</li>
+    </ul>
+    <p>Until then, the strongest material evidence and the strongest testimony point in different directions, and both deserve to be read on their own terms.</p>
+  </div>
+</section>
+
+<section id="sources" style="border-bottom:0">
+  <div class="head"><span class="num">§</span><h2>Sources</h2></div>
+  <ol class="sources">
+    <li id="s1"><a href="https://nnci.net/sites/default/files/2020-02/Story%20of%20Nitinol.pdf">Kauffman &amp; Mayo, The Story of Nitinol (NNCI reprint)</a></li>
+    <li id="s2"><a href="https://en.wikipedia.org/wiki/Nickel_titanium">Nickel titanium, Wikipedia</a></li>
+    <li id="s3"><a href="https://apps.dtic.mil/sti/pdfs/AD0742767.pdf">F. E. Wang, NOLTR 72-4, On the TiNi (Nitinol) Martensitic Transition, 1972</a></li>
+    <li id="s4"><a href="https://apps.dtic.mil/sti/tr/pdf/ADA379759.pdf">H. U. Schuerch, NASA CR-1232, Certain Physical Properties and Applications of Nitinol, 1968</a></li>
+    <li id="s5"><a href="https://nitinol.com/reference/a-historical-perspective/">Confluent Medical, A Historical Perspective</a></li>
+    <li id="s6"><a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/7455738">US Patent 7,455,738, Long fatigue life nitinol</a></li>
+    <li id="s7"><a href="https://ntrs.nasa.gov/citations/19720022818">Jackson, Wagner, Wasilewski (Battelle), NASA SP-5110, 55-Nitinol, 1972</a></li>
+    <li id="s8"><a href="https://ntrs.nasa.gov/api/citations/19690026989/downloads/19690026989.pdf">Goodyear Aerospace with Battelle, NASA CR-1433, Nitinol Characterization Study</a></li>
+    <li id="s9"><a href="https://xeno-lovegood.blogspot.com/2010/08/roswell-battelle-memory-metal-new.html">A. Bragalia, Roswell, Battelle and Memory Metal (2010, repost)</a></li>
+    <li id="s10"><a href="https://www.hjkc.de/_blog/2393-ufo-forschung---ufo-absturz-bei-roswell-1947--teil-8/">SUNlite, The Roswell Corner (critique, archived)</a></li>
+    <li id="s11"><a href="https://drmsh.com/?p=6686">M. Heiser, on missing Battelle reports, contract AF33(038)-3736</a></li>
+    <li id="s12"><a href="https://www.theblackvault.com/documentarchive/dod-releases-kona-blue-documents/">DoD releases KONA BLUE documents (The Black Vault)</a></li>
+    <li id="s13"><a href="https://www.theblackvault.com/documentarchive/?p=20825">FOIA emails on AARO report rollout and KONA BLUE</a></li>
+    <li id="s14"><a href="https://documents2.theblackvault.com/documents/osd/konablue-release1.pdf">AARO, History and Origin of KONA BLUE (PDF)</a></li>
+    <li id="s15"><a href="https://www.theblackvault.com/documentarchive/?p=19746">AARO / ORNL, Analysis of a Metallic Specimen</a></li>
+    <li id="s16"><a href="https://ufopedia.pages.dev/sources/aaro-historical-review-2024">AARO Historical Record Report Vol. I, summary and responses</a></li>
+    <li id="s17"><a href="https://git.hackliberty.org/Git-Mirrors/uap_resources/raw/branch/main/ScottCrainAnMJ12Informant.pdf">T. S. Crain, An MJ-12 Informant (Walker / Steinman)</a></li>
+    <li id="s18"><a href="https://groups.google.com/g/alt.paranet.ufo/c/xEDdEMw4bRk">alt.paranet.ufo, Center account</a></li>
+    <li id="s19"><a href="https://cal1.lr.ggtyler.dev/r/UFOs/comments/161b6cn/roswell_the_wrightpatterson_air_force_and">Roswell, Wright-Patterson and Battelle connection (summary of Bragalia research)</a></li>
+    <li id="s20"><a href="https://gaia.com/article/ben-rich-lockheed-martin-and-ufos">Ben Rich, Lockheed Martin and UFOs (Harzan account)</a></li>
+    <li id="s21"><a href="https://www.hjkc.de/_blog/2907-ufo-forschung---wenn-aus-einem-gag-die-geburt-eines-modernen-mythos-der-ufologie-von-exopolitik-wird/">P. Brookesmith, Taking E.T. Home: Birth of a Modern Myth (archived)</a></li>
+    <li id="s22"><a href="https://techcrunch.com/?p=2574924">TechCrunch, Former pilots recount UFO sightings (2023)</a></li>
+    <li id="s23"><a href="https://www.cbsnews.com/news/tic-tac-ufo-sighting-uap-video-dave-fravor-alex-dietrich-navy-fighter-pilots-house-testimony/">CBS News, The story behind the Tic Tac sighting</a></li>
+    <li id="s24"><a href="https://www.newsweek.com/my-testimony-congress-uap-was-tip-iceberg-opinion-1817377">R. Graves, Newsweek op-ed</a></li>
+    <li id="s25"><a href="https://rollcall.com/2024/03/08/no-evidence-of-extraterrestrial-technology-report-finds/">Roll Call, AARO report finds no evidence of extraterrestrial technology (2024)</a></li>
+    <li id="s26"><a href="https://www.cbsnews.com/news/is-the-truth-really-out-there-studying-uap-sightings/">CBS News, Is the truth really out there? (Nov 2026)</a></li>
+    <li id="s27"><a href="https://starlust.org/gallery/what-a-u-s-intelligence-officer-under-oath-told-congress-about-ufos-mux5kas3/">Starlust, 2023 hearing summary</a></li>
+    <li id="s28"><a href="https://www.rev.com/transcripts/house-hearing-on-unidentified-anomalous-phenomena">House hearing transcript, Nov 2024 (Gallaudet)</a></li>
+    <li id="s29"><a href="https://www.rev.com/transcripts/house-uap-whistleblower-hearing">House UAP whistleblower hearing transcript, 2025 (Wiggins)</a></li>
+    <li id="s30"><a href="https://defensescoop.com/2026/02/20/trump-ufo-uap-government-files-disclosure/">DefenseScoop, Trump's UAP disclosure tease</a></li>
+    <li id="s31"><a href="https://defensescoop.com/2026/02/25/hegseth-ufo-disclosure-trump-aaro-uap-caseload/">DefenseScoop, AARO caseload exceeds 2,000</a></li>
+    <li id="s32"><a href="https://en.wikipedia.org/wiki/United_States_UAP_files">United States UFO files (PURSUE), Wikipedia</a></li>
+    <li id="s33"><a href="https://abcnews.com/Politics/pentagon-begins-release-decades-unresolved-ufo-files/story?id=132780534">ABC News, Pentagon releases declassified UFO files</a></li>
+    <li id="s34"><a href="https://www.dlapiper.com/en/insights/publications/2026/08/odni-issues-preliminary-guidance-on-disclosure-of-unidentified-anomalous-phenomena">DLA Piper, ODNI preliminary guidance on UAP disclosure</a></li>
+    <li id="s35"><a href="https://earthsky.org/human-world/6th-batch-of-pentagon-uap-files-ufos-pursue/">EarthSky, 6th batch of Pentagon UAP files</a></li>
+    <li id="s36"><a href="https://defensescoop.com/2026/06/17/new-science-advisory-council-forms-to-help-us-government-resolve-the-uap-mystery/">DefenseScoop, New science advisory council</a></li>
+    <li id="s37"><a href="https://scientificamerican.com/article/the-white-house-goes-all-in-on-aliens-with-new-uap-science-advisory-council">Scientific American, UAP Science Advisory Council</a></li>
+    <li id="s38"><a href="https://www.sentinel-news.org/p/congress-eyes-a-new-uap-hearing">Sentinel News, Congress eyes a new UAP hearing (Oct 2026)</a></li>
+    <li id="s39"><a href="https://www.researchgate.net/publication/356908926_Improved_instrumental_techniques_including_isotopic_analysis_applicable_to_the_characterization_of_unusual_materials_with_potential_relevance_to_aerospace_forensics">Nolan, Vallée, Jiang, Lemke, Progress in Aerospace Sciences 128 (2022)</a></li>
+    <li id="s40"><a href="https://stanfordmag.org/contents/first-contact">Stanford Magazine, First Contact</a></li>
+    <li id="s41"><a href="https://en.wikipedia.org/wiki/Garry_Nolan">Garry Nolan, Wikipedia</a></li>
+    <li id="s42"><a href="https://en.wikipedia.org/wiki/Monica_Reza">Monica Reza, Wikipedia</a></li>
+    <li id="s43"><a href="https://spacenews.com/?p=72927">SpaceNews, interview with Monica Jacinto on Mondaloy</a></li>
+    <li id="s44"><a href="https://dsiac.dtic.mil/articles/rocket-engine-technologies-for-next-gen-launch-systems-demonstrated">DSIAC / AFRL, Mondaloy 200 demonstration</a></li>
+    <li id="s45"><a href="https://www.vice.com/en/article/stanford-professor-garry-nolan-analyzing-anomalous-materials-from-ufo-crashes/">Vice, Garry Nolan interview</a></li>
+    <li id="s46"><a href="https://www.audioscrape.com/person/speaker-04?page=79">Joe Rogan Experience #2372, transcript excerpt</a></li>
+    <li id="s47"><a href="https://www.altpropulsion.com/uap-phenomena-a-serious-look/">Alternative Propulsion Engineering Conference, Nolan talk summary</a></li>
+    <li id="s48"><a href="https://journalofscientificexploration.org/index.php/jse/article/view/2415/1565">Powell et al., Journal of Scientific Exploration 36(1), 2022</a></li>
+    <li id="s49"><a href="https://thesolfoundation.org/sol-forum/new-uap-materials-tests-what-the-results-reveal-dr-garry-nolan/">Sol Forum, New UAP materials tests (July 2026)</a></li>
+    <li id="s50"><a href="https://www.eastidahonews.com/?p=830480">CNN via East Idaho News, FBI on missing scientists</a></li>
+    <li id="s51"><a href="https://www.newsweek.com/wave-of-missing-dead-scientists-could-be-foreign-operation-congressman-11853631">Newsweek, Burlison on a foreign operation</a></li>
+    <li id="s52"><a href="https://nixle.us/GFA8F">LASD Crescenta Valley, Monica Reza update</a></li>
+    <li id="s53"><a href="https://www.ksl.com/article/51460826/fbi-involved-in-search-for-retired-air-force-major-general-missing-for-nearly-2-weeks">KSL, FBI involved in McCasland search</a></li>
+    <li id="s54"><a href="https://www.kob.com/new-mexico/bcso-releases-new-timeline-on-missing-retired-air-force-general/">KOB, BCSO timeline</a></li>
+    <li id="s55"><a href="https://globalnews.ca/news/11727709/william-neil-mccasland-retired-air-force-major-general-missing-fbi-search/">Global News, wife's statement</a></li>
+    <li id="s56"><a href="https://keyt.com/news/national-world/cnn-national/2026/06/01/remains-of-los-alamos-national-laboratory-employee-missing-for-nearly-a-year-found-in-new-mexico-forest/">CNN via KEYT, Casias remains found</a></li>
+    <li id="s57"><a href="https://www.abqjournal.com/news/remains-identified-as-missing-los-alamos-worker/3054493">Albuquerque Journal, remains identified</a></li>
+    <li id="s58"><a href="https://www.foxnews.com/us/family-los-alamos-lab-worker-found-dead-near-handgun-rejects-suicide-theory-suspects-foul-play">Fox News, family rejects suicide theory</a></li>
+    <li id="s59"><a href="https://da.lacounty.gov/node/7170">LA County District Attorney, Snyder charges</a></li>
+    <li id="s60"><a href="https://pasadenaweekly.com/news/caltech-scientist-killed-suspect-denies-charges-in-front-porch-shooting/article_6ab38281-ac14-413e-b32a-34501be2f550.html">Pasadena Weekly, not-guilty plea</a></li>
+    <li id="s61" value="61"><a href="https://www.af.mil/the-roswell-report/">US Air Force, The Roswell Report (1994) and Case Closed (1997)</a></li>
+    <li id="s62" value="62"><a href="https://www.deseret.com/1997/6/24/19319696/air-force-report-says-roswell-aliens-were-just-dummies">Deseret News, 1997 Air Force report on test dummies</a></li>
+    <li id="s63" value="63"><a href="https://ufologie.patrickgross.org/rw/w/jessemarceljr.htm">Roswell witness file: Jesse Marcel Jr. (P. Gross)</a></li>
+    <li id="s64" value="64"><a href="https://www.theblackvault.com/documentarchive/the-ufo-legend-of-unknown-metal-alloys-housed-in-a-secret-las-vegas-warehouse/">The Black Vault, the Las Vegas alloy warehouse claim</a></li>
+    <li id="s65" value="65"><a href="https://www.vice.com/en/article/tom-delonges-ufo-research-company-paid-dollar35000-for-exotic-metals-that-might-actually-just-be-bismuth/">Vice, TTSA paid $35,000 for "exotic metals"</a></li>
+    <li id="s66" value="66"><a href="https://en.wikipedia.org/wiki/Wilbert_Brockhouse_Smith">Wilbert Brockhouse Smith, Wikipedia (1950 memo)</a></li>
+    <li id="s67" value="67"><a href="https://ufopedia.pages.dev/raw/articles/liberation-times-lacatski-craft-unknown-origin-2023">Liberation Times, Lacatski confirms craft of unknown origin (Oct 2023, archived)</a></li>
+    <li id="s68" value="68"><a href="https://military-history.fandom.com/wiki/David_Grusch_UFO_whistleblower_claims">David Grusch whistleblower claims and ICIG finding</a></li>
+    <li id="s69" value="69"><a href="https://en.wikipedia.org/wiki/Paul_R._Hill">Paul R. Hill, Wikipedia</a></li>
+    <li id="s70" value="70"><a href="https://ldolphin.org/hill.html">H. Puthoff, review of Unconventional Flying Objects</a></li>
+    <li id="s71" value="71"><a href="https://ufologie.patrickgross.org/htm/woodrm91.htm">Robert M. Wood, career record and 1991 paper (P. Gross)</a></li>
+    <li id="s72" value="72"><a href="https://medium.com/@richgel99/william-bill-g-uhouses-marine-corps-service-verified-53890a291fac">R. Geldreich, Bill Uhouse service verified</a></li>
+    <li id="s73" value="73"><a href="https://www.snopes.com/fact-check/boyd-bushman-aliens/">Snopes, Boyd Bushman</a></li>
+    <li id="s74" value="74"><a href="https://www.theblackvault.com/casefiles/boyd-bushmans-last-interview-a-documentary-on-area-51-and-ufos-over-tucson-arizona/amp/">The Black Vault, Bushman case file</a></li>
+    <li id="s75" value="75"><a href="https://pod.wave.co/podcast/danny-jones-podcast/422-we-cracked-antigravity-nasa-physicists-shows-proof-of-secret-tech">Danny Jones Podcast #422 (Aug 2026)</a></li>
+    <li id="s76" value="76"><a href="https://uapmurders.com/physics/Details/Podcasts/">Index of UAP physics podcasts (Lazar, Puthoff, Davis)</a></li>
+    <li id="s78" value="78"><a href="https://www.arcamax.com/currentnews/newsheadlines/s-4078800">Arcamax, cases under FBI review incl. Eskridge</a></li>
+    <li id="s79" value="79"><a href="https://defensescoop.com/2026/09/02/pentagon-seeks-access-to-vast-private-ufo-records-collection/">DefenseScoop, Pentagon seeks private UFO records collection (Sep 2026)</a></li>
+    <li id="s80" value="80"><a href="https://www.unexplained-mysteries.com/news/400192/roswell-ufo-witness-testimony-included-in-latest-ufo-files-drop">Unexplained Mysteries, Haut testimony in seventh UFO files release (Oct 2026)</a></li>
+    <li id="s81" value="81"><a href="https://www.theufochronicles.com/2013/09/new-witness-uncovered-metallurgist.html">D. Balthaser, Metallurgist tasked to analyze Roswell debris (2013)</a></li>
+    <li id="s82" value="82"><a href="https://ppacc.player.fm/series/american-alchemy-3620084/presidential-advisor-i-directly-handled-ufo-material-ft-harald-malmgren">American Alchemy, Presidential Advisor: I Directly Handled UFO Material (2025)</a></li>
+    <li id="s83" value="83"><a href="https://signaltheory.substack.com/p/the-witness-at-the-edge-of-reality">Signal Theory, Parsing the UFO testimony of Harald Malmgren</a></li>
+    <li id="s84" value="84"><a href="https://www.washingtonexaminer.com/?p=3415987">Washington Examiner, Malmgren's 1962 UFO tales wither under scrutiny</a></li>
+  </ol>
+</section>
+
+</main>
+<footer><a href="../">← All ideas</a><br><br>Compiled 4 November 2026. Claims are current to the cited reporting; open cases may have changed since.</footer>
+</div>
+
+
+<script>
+(function(){
+  function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function put(id,w,h,body){const el=document.getElementById(id);if(!el)return;const lab=el.closest('figure').querySelector('.plate-head span').textContent;el.innerHTML='<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+lab+'">'+body+'</svg>'}
+  const L=(x1,y1,x2,y2,c,sw,da)=>'<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" class="'+(c||'ln')+'" stroke-width="'+(sw||1)+'"'+(da?' stroke-dasharray="'+da+'"':'')+'/>';
+  const T=(x,y,s,a,c)=>'<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'"'+(a?' text-anchor="'+a+'"':'')+(c?' class="'+c+'"':'')+'>'+s+'</text>';
+  const C=(x,y,r,c,sw)=>'<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+r+'" class="'+(c||'dot')+'"'+(sw?' stroke-width="'+sw+'"':'')+'/>';
+  const P=(d,c,sw,da)=>'<path d="'+d+'" class="'+(c||'ln')+'" stroke-width="'+(sw||1)+'"'+(da?' stroke-dasharray="'+da+'"':'')+'/>';
+  const R=(x,y,w,h,fill,extra)=>'<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+Math.max(0,w).toFixed(1)+'" height="'+h.toFixed(1)+'" '+fill+(extra||'')+'/>';
+  const sig=x=>1/(1+Math.exp(-x));
+  // claim glyphs
+  function G(type,x,y,s){s=s||5;
+    if(type==='D')return R(x-s,y-s,2*s,2*s,'class="inkf"');
+    if(type==='O')return R(x-s,y-s,2*s,2*s,'class="hol" stroke-width="1.3"')+R(x-s,y-s,s,2*s,'class="inkf"');
+    if(type==='T')return C(x,y,s);
+    if(type==='S')return C(x,y,s-1,'hol',1.4);
+    if(type==='H')return P('M'+x+' '+(y-s)+' L'+(x+s)+' '+(y+s)+' L'+(x-s)+' '+(y+s)+' Z','hol',1.3);
+    return '';
+  }
+  // marker styles for elements
+  function M(k,x,y,r){r=r||3.2;
+    if(k===0)return C(x,y,r);
+    if(k===1)return C(x,y,r-.4,'hol',1.3);
+    if(k===2)return R(x-r+.4,y-r+.4,2*r-.8,2*r-.8,'class="inkf"');
+    if(k===3)return L(x-r,y-r,x+r,y+r,'ln',1.4)+L(x-r,y+r,x+r,y-r,'ln',1.4);
+    return P('M'+x+' '+(y-r)+' L'+(x+r)+' '+(y+r*.8)+' L'+(x-r)+' '+(y+r*.8)+' Z','inkf',0);
+  }
+
+  /* 01 hysteresis */
+  (function(){
+    const W=420,H=290,x0=50,x1=400,y0=240,y1=26;let b='';
+    for(let i=0;i<=4;i++){const y=y0-(y0-y1)*i/4;b+=L(x0,y,x1,y,'rl');}
+    b+=L(x0,y0,x1,y0)+L(x0,y0,x0,y1);
+    const curve=(c,s)=>{let d='';for(let i=0;i<=90;i++){const t=i/90,x=x0+(x1-x0)*t,v=sig((t-c)*s);d+=(i?'L':'M')+x.toFixed(1)+' '+(y0-(y0-y1)*v).toFixed(1);}return d};
+    b+=P(curve(.62,20),'ln',2.2)+P(curve(.40,20),'ln',1.3,'5 4');
+    b+=T(x0+(x1-x0)*.70,y0-(y0-y1)*.62,'heating →','start')+T(x0+(x1-x0)*.34,y0-(y0-y1)*.36,'← cooling','end','m');
+    b+=T(x0-8,y1+4,'100%','end','m')+T(x0-8,y0+4,'0%','end','m');
+    b+=T((x0+x1)/2,y0+32,'temperature','middle','m');
+    b+=T(x0+(x1-x0)*.40,y0+15,'Ms','middle','m')+T(x0+(x1-x0)*.62,y0+15,'As','middle','m');
+    // martensite inset (top-left, sheared), austenite inset (bottom-right, cubic)
+    const s=13;let g='';
+    const mx=76,my=46;
+    for(let i=0;i<3;i++)for(let j=0;j<3;j++)g+=C(mx+i*s+j*6,my+j*s,2.6);
+    for(let i=0;i<2;i++)for(let j=0;j<2;j++)g+=C(mx+s/2+i*s+j*6+3,my+s/2+j*s,2.6,'hol',1.2);
+    const ax=300,ay=150;
+    for(let i=0;i<3;i++)for(let j=0;j<3;j++)g+=C(ax+i*s,ay+j*s,2.6);
+    for(let i=0;i<2;i++)for(let j=0;j<2;j++)g+=C(ax+s/2+i*s,ay+s/2+j*s,2.6,'hol',1.2);
+    g+=T(mx-6,my+50,'martensite, cool','start','m')+T(ax-6,ay+50,'austenite, hot','start','m');
+    b+=g;
+    put('p-hyst',W,H,b);
+  })();
+
+  /* 02 magnetostriction */
+  (function(){
+    const W=420,H=250,x0=96,x1=400;let b='';
+    const lx=v=>x0+(x1-x0)*(Math.log10(v)-1)/3; // 10..10000
+    [10,100,1000,10000].forEach(v=>{const x=lx(v);b+=L(x,24,x,200,'rl')+T(x,218,v.toLocaleString('en-US'),'middle','m');});
+    b+=T((x0+x1)/2,240,'strain, parts per million (log)','middle','m');
+    const rows=[['Iron',20],['Galfenol',400],['Terfenol-D',2000]];
+    rows.forEach((r,i)=>{const y=48+i*54;b+=T(x0-10,y+16,r[0],'end')+R(x0,y,lx(r[1])-x0,24,'fill="url(#dots)"')+R(x0,y,lx(r[1])-x0,24,'class="ln" fill="none"')+T(lx(r[1])+8,y+16,'≈'+r[1].toLocaleString('en-US'),'start','m');});
+    b+=L(x0,24,x0,200);
+    put('p-magneto',W,H,b);
+  })();
+
+  /* 03 cantor */
+  (function(){
+    const W=420,H=300,cx=210,cy=150;let b='';
+    const els=['Fe','Cr','Mn','Ni','Co'];
+    // lattice
+    const r=rng(7),s=16,cols=9,rows=7,ox=cx-s*(cols-1)/2,oy=cy-s*(rows-1)/2;
+    for(let i=0;i<cols;i++)b+=L(ox+i*s,oy,ox+i*s,oy+s*(rows-1),'rl');
+    for(let j=0;j<rows;j++)b+=L(ox,oy+j*s,ox+s*(cols-1),oy+j*s,'rl');
+    const bag=[];for(let i=0;i<cols*rows;i++)bag.push(i%5);for(let i=bag.length-1;i>0;i--){const k=Math.floor(r()*(i+1));[bag[i],bag[k]]=[bag[k],bag[i]];}
+    let n=0;for(let j=0;j<rows;j++)for(let i=0;i<cols;i++)b+=M(bag[n++],ox+i*s,oy+j*s,3.4);
+    // pentagon labels
+    els.forEach((e,k)=>{const a=-Math.PI/2+k*2*Math.PI/5,R0=128,x=cx+Math.cos(a)*R0*1.25,y=cy+Math.sin(a)*R0*.92;b+=M(k,x-16,y-4,4.5)+T(x-6,y,e,'start','big')+T(x-6,y+14,'20%','start','m');});
+    put('p-cantor',W,H,b);
+  })();
+
+
+
+  /* 06 glass */
+  (function(){
+    const W=420,H=250;let b='';const r=rng(31);
+    // crystal
+    for(let j=0;j<8;j++)for(let i=0;i<9;i++)b+=C(28+i*18,30+j*22,4.2);
+    // glass: dart throwing with 5 sizes
+    const sizes=[6.2,5,4.4,3.6,2.4];const pts=[];
+    let tries=0;while(pts.length<120&&tries<6000){tries++;const k=Math.floor(r()*5),rr=sizes[k],x=240+rr+r()*(160-2*rr),y=22+rr+r()*(176-2*rr);if(pts.every(p=>Math.hypot(p[0]-x,p[1]-y)>p[2]+rr+1.2))pts.push([x,y,rr,k]);}
+    pts.forEach(p=>{b+= (p[3]%2? C(p[0],p[1],p[2]-.6,'hol',1.2):C(p[0],p[1],p[2]));});
+    b+=L(210,20,210,206,'rl');
+    b+=T(100,232,'crystal: one repeating cell','middle','m')+T(320,232,'glass: Zr Ti Cu Ni Be, no order','middle','m');
+    put('p-glass',W,H,b);
+  })();
+
+  /* 07 composition */
+  (function(){
+    const W=1000,H=330,x0=70,x1=960,y0=250,y1=70,lo=48,hi=56;let b='';
+    const X=a=>x0+(x1-x0)*(a-lo)/(hi-lo);
+    const at=w=>{const n=w/58.693,t=(100-w)/47.867;return 100*n/(n+t)};
+    // band
+    b+=R(X(at(54.5)),y1,X(at(57))-X(at(54.5)),y0-y1,'fill="url(#hatch)"','');
+    b+=T(X(at(57))+8,y1+34,'industry range,','start','m')+T(X(at(57))+8,y1+48,'binary nitinol','start','m');
+    for(let a=48;a<=56;a++){b+=L(X(a),y0,X(a),y0+6)+T(X(a),y0+22,a.toFixed(0),'middle');}
+    b+=L(x0,y0,x1,y0)+T((x0+x1)/2,y0+44,'nickel, atomic %','middle','m');
+    // top axis weight
+    b+=L(x0,y1-34,x1,y1-34,'rl');
+    for(let w=53;w<=60;w++){const x=X(at(w));if(x<x0||x>x1)continue;b+=L(x,y1-38,x,y1-30)+T(x,y1-44,w+' wt%','middle','m');}
+    // room temp
+    const yr=y0-(y0-y1)*.45;b+=L(x0,yr,x1,yr,'mu',1,'3 4')+T(x0+4,yr-6,'room temperature','start','m');
+    // conceptual curve
+    let d='';for(let i=0;i<=160;i++){const a=48+i*(51.6-48)/160;const v=.85-.95*sig((a-50.55)*4.2);d+=(i?'L':'M')+X(a).toFixed(1)+' '+(y0-(y0-y1)*v).toFixed(1);}
+    b+=P(d,'ln',2.2);
+    b+=T(X(48.2),y0-(y0-y1)*.88,'transforms warmer','start','m')+T(X(52.1),y0-(y0-y1)*.2,'transforms colder','start','m');
+    // markers
+    [[55,'55-Nitinol: memory effect'],[60,'60-Nitinol']].forEach(m=>{const x=X(at(m[0]));if(x>x1)return;b+=L(x,y1-30,x,y0,'ln',1.6)+C(x,y1-30,5)+'<rect x="'+(x+4)+'" y="'+(y1+2)+'" width="'+(m[1].length*6.8+8)+'" height="17" class="pap"/>'+T(x+8,y1+14,m[1],'start');});
+    // screening ticks
+    const r=rng(3);for(let i=0;i<34;i++){const a=48.4+r()*7.2;b+=L(X(a),y0-4,X(a),y0-14,'mu',1);}
+    put('p-comp',W,H,b);
+  })();
+
+  /* 08 network */
+  (function(){
+    const W=1000,H=540;let b='';
+    const N={
+      ros:[110,100,'Roswell, 1947','alleged debris',1],
+      wp:[380,100,'Wright-Patterson','AFRL · NASIC',0],
+      bat:[640,100,'Battelle','Columbus, Ohio',0],
+      nol:[880,100,'Naval Ordnance Lab','Nitinol 1959–62',0],
+      nasa:[850,230,'NASA','Nitinol studies',0],
+      roc:[110,230,'Rocketdyne','Mondaloy',0],
+      leg:[470,280,'Legacy program','as alleged',1],
+      sk:[160,390,'Skunk Works','and contractors',0],
+      big:[690,210,'Bigelow (BAASS)','AAWSAP contractor',0],
+      dia:[860,330,'DIA','AAWSAP / AATIP',0],
+      dhs:[860,480,'DHS','Kona Blue',0],
+      aaro:[470,480,'AARO','2022 onward',0],
+      orn:[200,490,'Oak Ridge','ORNL',0]
+    };
+    const E=[
+      ['ros','wp',1,'debris (claimed)'],
+      ['wp','bat',0,'Ti contract, 1940s'],
+      ['bat','nol',1,'Nitinol theory'],
+      ['bat','nasa',0,'Nitinol work, 1968–72'],
+      ['wp','roc',0,'AFRL co-develops Mondaloy'],
+      ['leg','wp',1,''],
+      ['leg','sk',1,'contractor custody (Grusch)'],
+      ['dia','dhs',0,'Kona Blue proposal, 2011'],
+      ['dia','big',0,''],
+      ['big','leg',1,'alloys stored (disputed)'],
+      ['dhs','leg',1,'expected transfer'],
+      ['aaro','orn',0,'fragment analysis'],
+      ['aaro','dhs',0,'Kona Blue review'],
+      ['aaro','leg',1,'access disputed']
+    ];
+    E.forEach(e=>{const a=N[e[0]],c=N[e[1]];b+=L(a[0],a[1],c[0],c[1],e[2]?'mu':'ln',e[2]?1.3:1.6,e[2]?'6 5':'');if(e[3]){const mx=(a[0]+c[0])/2,my=(a[1]+c[1])/2+(a[1]===c[1]?-36:0);b+='<rect x="'+(mx-e[3].length*3.4-4)+'" y="'+(my-9)+'" width="'+(e[3].length*6.8+8)+'" height="16" class="pap"/>'+T(mx,my+3,e[3],'middle',e[2]?'m':'');}});
+    Object.values(N).forEach(n=>{const w=Math.max(n[2].length,n[3].length)*7.4+24;b+='<rect x="'+(n[0]-w/2)+'" y="'+(n[1]-22)+'" width="'+w+'" height="44" class="hol" stroke-width="'+(n[4]?1.2:1.6)+'"'+(n[4]?' stroke-dasharray="5 4"':'')+'/>'+T(n[0],n[1]-3,n[2],'middle')+T(n[0],n[1]+13,n[3],'middle','m');});
+    put('p-network',W,H,b);
+  })();
+
+  /* 09 timeline */
+  (function(){
+    const W=1000,H=330,y=170,xa=40,xb=520,xc=560,xd=970;let b='';
+    const XY=yr=>xa+(xb-xa)*(yr-2004)/(2026-2004); // 2004..2026 start
+    const XM=m=>xc+(xd-xc)*(m-1)/(11-1);             // Jan..Nov 2026
+    b+=L(xa,y,xb,y,'ln',1.6)+L(xc,y,xd,y,'ln',1.6);
+    b+=L(xb+6,y-8,xb+14,y+8)+L(xb+16,y-8,xb+24,y+8);
+    [2004,2008,2012,2016,2020,2024].forEach(v=>{b+=L(XY(v),y-4,XY(v),y+4)+T(XY(v),y+20,v,'middle','m');});
+    ['Jan','Mar','May','Jul','Sep','Nov'].forEach((m,i)=>{const x=XM(1+i*2);b+=L(x,y-4,x,y+4)+T(x,y+20,m,'middle','m');});
+    b+=T(xc,y+38,'2026, by month','start','m')+T(xa,y+38,'2004 to 2025, by year','start','m');
+    const ev=[
+      [XY(2004.9),'T','Tic Tac, Nimitz',-1,1],
+      [XY(2011.6),'D','Kona Blue approved, then ended',1,1],
+      [XY(2014.8),'T','Graves squadron sightings',-1,2],
+      [XY(2015.05),'T','Gallaudet exercise',1,2],
+      [XY(2022.5),'D','AARO created',-1,1],
+      [XY(2023.55),'T','Grusch, Fravor, Graves hearing',1,1],
+      [XY(2024.3),'D','Kona Blue files released',-1,3],
+      [XY(2024.87),'T','Gallaudet hearing',1,3],
+      [XY(2025.7),'T','Wiggins hearing',-1,2],
+      [XM(2.6),'D','Disclosure directive',-1,1],
+      [XM(5.2),'D','PURSUE first release',1,1],
+      [XM(6.5),'D','Governance board',-1,2],
+      [XM(9.4),'D','NDA waiver, 6th release',1,2],
+      [XM(10.4),'T','New hearing sought',-1,3],
+      [XM(10.3),'D','7th release, Haut affidavit',1,3]
+    ];
+    ev.forEach(e=>{const dir=e[3],lane=e[4];const yy=y+dir*(30+lane*30);const rt=e[0]>780;b+=L(e[0],y,e[0],yy,'rl')+G(e[1],e[0],y,5)+G(e[1],e[0],yy,4)+T(e[0]+(rt?-8:8),yy+4,e[2],rt?'end':'start');});
+    put('p-timeline',W,H,b);
+  })();
+
+  /* 10 isotopes */
+  (function(){
+    const W=1000,H=230,x0=290,x1=960;let b='';
+    const rows=[['Earth average','',[.79,.10,.11]],['Ubatuba Mg, Powell 2022','within terrestrial limits',[.79,.10,.11]],['Ubatuba Mg, Nolan piece','reported off-normal, values unpublished',null]];
+    const fills=['class="inkf"','fill="url(#dots)"','fill="url(#hatch)"'];
+    rows.forEach((r,i)=>{const y=30+i*56;b+=T(x0-14,y+14,r[0],'end')+(r[1]?T(x0-14,y+30,r[1],'end','m'):'');
+      if(r[2]){let cx=x0;r[2].forEach((f,k)=>{const w=(x1-x0)*f;b+=R(cx,y,w,22,fills[k])+R(cx,y,w,22,'class="ln" fill="none"');if(i===0)b+=T(cx+4,y-6,['²⁴Mg ≈79%','²⁵Mg ≈10%','²⁶Mg ≈11%'][k],'start','m');cx+=w;});}
+      else{b+=R(x0,y,x1-x0,22,'fill="url(#hatch)" opacity=".35"')+R(x0,y,x1-x0,22,'class="ln" fill="none" stroke-dasharray="5 4"')+'<rect x="'+((x0+x1)/2-90)+'" y="'+(y+3)+'" width="180" height="16" class="pap"/>'+T((x0+x1)/2,y+15,'no published values','middle');}
+    });
+    put('p-iso',W,H,b);
+  })();
+
+  /* 11 matrix */
+  (function(){
+    const rows=[
+      ['Engineered alloys'],
+      ['Nitinol',2,2,2,0],['Terfenol-D',3,2,1,0],['Cantor alloy',5,2,2,0],['Vitreloy',5,3,3,0],
+      ['Alleged UAP samples'],
+      ['Council Bluffs, 1977','3+',1,1,0],['Ubatuba Mg (Powell)',1,2,1,0],['Ubatuba Mg (Nolan piece)',1,2,1,1],['Ubatuba Si (Nolan)',1,2,1,1],['Mg-Zn-Bi (AARO / ORNL)',3,1,1,0]
+    ];
+    const W=1000,c0=250,cs=[340,540,710,880];let y=60,b='';
+    ['Principal elements','Process control','Structural novelty','Isotope anomaly'].forEach((h,i)=>b+=T(cs[i],34,h.toUpperCase(),'middle','m'));
+    b+=L(20,44,980,44);
+    rows.forEach(r=>{
+      if(r.length===1){y+=10;b+=T(20,y+8,r[0].toUpperCase(),'start');b+=L(20,y+16,980,y+16,'rl');y+=34;return;}
+      b+=T(c0,y+4,r[0],'end');
+      const n=typeof r[1]==='number'?r[1]:3;for(let k=0;k<5;k++)b+=k<n?C(cs[0]-36+k*18,y,5):C(cs[0]-36+k*18,y,2,'dot');
+      if(r[1]==='3+')b+=T(cs[0]+56,y+4,'+ mix','start','m');
+      [r[2],r[3]].forEach((v,j)=>{for(let k=0;k<3;k++)b+=R(cs[j+1]-27+k*20,y-6,12,12,k<v?'class="inkf"':'class="hol" stroke-width="1"');});
+      const xi=cs[3];b+=r[4]===1?C(xi,y,6,'hol',1.4)+'<path d="M'+xi+' '+(y-6)+' A6 6 0 0 1 '+xi+' '+(y+6)+' Z" class="inkf"/>':C(xi,y,6,'hol',1.4);
+      y+=30;});
+    b+=T(cs[3],y+10,'○ none claimed · ◐ claimed, unpublished','middle','m');
+    put('p-matrix',W,y+24,b);
+  })();
+})();
+</script>
+
+</body>
+</html>
+
