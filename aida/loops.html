@@ -14,8 +14,9 @@
   #stage { position:relative; min-height:0; width:100%; max-width:var(--col); margin:0 auto; cursor:pointer; }
   #c { position:absolute; inset:0; width:100%; height:100%; display:block; }
   footer { border-top:1px solid var(--line); padding:0 max(20px, env(safe-area-inset-right)) env(safe-area-inset-bottom) max(20px, env(safe-area-inset-left)); }
-  .controls { max-width:calc(var(--col) - 40px); margin:0 auto; height:72px; display:grid; grid-template-columns:auto minmax(0, 1fr) auto; align-items:center; gap:20px; }
+  .controls { max-width:calc(var(--col) - 40px); margin:0 auto; height:72px; display:grid; grid-template-columns:auto 1fr; align-items:center; gap:20px; }
   .transport { display:flex; align-items:center; gap:4px; }
+  #play { margin-right:8px; }
   button { font:inherit; color:inherit; background:none; border:0; width:40px; height:40px; display:grid; place-items:center; cursor:pointer; padding:0; border-radius:50%; transition:opacity .12s, background-color .12s; }
   button svg { width:14px; height:14px; }
   button:focus-visible { outline:1px solid var(--ink); outline-offset:2px; }
@@ -24,11 +25,11 @@
   #play { width:44px; height:44px; background:var(--accent, var(--ink)); color:var(--paper); }
   #play svg { width:14px; height:14px; }
   #play:not(:disabled):hover { opacity:.85; }
-  #name { width:auto; max-width:100%; justify-self:start; min-width:0; height:40px; border-radius:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:0; display:block; text-align:left; }
+  #name { position:absolute; left:50%; transform:translateX(-50%); width:auto; max-width:calc(100% - 40px); height:40px; border-radius:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:0 8px; display:block; text-align:center; font-size:14px; }
   #name:hover { text-decoration:underline; text-underline-offset:4px; }
   #name span, #time span { opacity:.45; }
-  #time { font-variant-numeric:tabular-nums; white-space:nowrap; }
-  @media (max-width:480px) { #time span { display:none; } .controls { gap:12px; } }
+  #time { font-variant-numeric:tabular-nums; white-space:nowrap; justify-self:end; }
+  @media (max-width:480px) { .controls { gap:12px; } }
   #index { position:absolute; left:50%; width:min(var(--col), 100%); bottom:var(--bar, 73px); background:var(--paper); border:1px solid var(--line); border-bottom:0; max-height:60dvh; overflow-y:auto; transform:translate(-50%, 8px); opacity:0; pointer-events:none; transition:opacity .15s, transform .15s; }
   #index.open { transform:translate(-50%, 0); opacity:1; pointer-events:auto; }
   #index ol { list-style:none; margin:0; padding:0; }
@@ -42,15 +43,14 @@
 </style>
 </head>
 <body>
-<div id="stage" role="img" aria-label="The loop as a ring of bars with a fading trace following the playhead."><canvas id="c"></canvas></div>
+<div id="stage"><canvas id="c" role="img" aria-label="The loop as a ring of bars with a fading trace following the playhead."></canvas><button id="name" aria-haspopup="true" aria-expanded="false" aria-controls="index"></button></div>
 <nav id="index" aria-label="All loops"><ol id="list"></ol></nav>
 <footer id="bar"><div class="controls">
   <div class="transport">
-    <button id="prev" aria-label="Previous loop"><svg viewBox="0 0 14 14"><path d="M9 2 L4 7 L9 12" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
     <button id="play" aria-label="Play" disabled><svg viewBox="0 0 14 14" id="icon"><path d="M3 1 L13 7 L3 13 Z" fill="currentColor"/></svg></button>
+    <button id="prev" aria-label="Previous loop"><svg viewBox="0 0 14 14"><path d="M9 2 L4 7 L9 12" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
     <button id="next" aria-label="Next loop"><svg viewBox="0 0 14 14"><path d="M5 2 L10 7 L5 12" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
   </div>
-  <button id="name" aria-haspopup="true" aria-expanded="false" aria-controls="index"></button>
   <div id="time" aria-live="off">0:00.0 <span>/ 0:42.0</span></div>
 </div></footer>
 <script>
@@ -60,7 +60,7 @@ const TRACKS = [
 ];
 const PAL = {"light":{"red":[236,63,39],"blue":[74,127,232],"yellow":[165,124,14],"p0":[231,71,35],"p1":[206,91,124],"p2":[164,124,19],"grey":[202,202,201]},"dark":{"red":[252,134,113],"blue":[125,168,252],"yellow":[212,161,9],"p0":[252,135,108],"p1":[249,131,162],"p2":[210,161,40],"grey":[92,92,91]}};
 const TRACE = 0.05;
-let track = TRACKS[1], ENV = track.env;
+let track = TRACKS[0], ENV = track.env;
 const B = 192, NW = 240, TAU = Math.PI * 2;
 const amp = (u, arr) => { u = ((u % 1) + 1) % 1; const f = u * B, i = Math.floor(f) % B, j = (i + 1) % B, t = f - Math.floor(f); return arr[i] * (1 - t) + arr[j] * t; };
 const rgb = c => `rgb(${c.join(',')})`;
@@ -70,7 +70,7 @@ const mode = () => dark.matches ? 'dark' : 'light';
 const grad = t => { const P = PAL[mode()]; return t < 0.5 ? mix(P.p0, P.p1, t * 2) : mix(P.p1, P.p2, (t - 0.5) * 2); };
 const $ = id => document.getElementById(id);
 
-let ctx, gain, buffer, source, startAt = 0, playing = false, duration = 42, paused = 0, loadId = 0, busy = false;
+let ctx, gain, buffer, source, startAt = 0, playing = false, duration = track.dur, paused = 0, loadId = 0, busy = false;
 const FADE = 0.025;
 const cache = {};
 async function load(t) {
@@ -132,7 +132,7 @@ $('stage').addEventListener('pointerup', e => { if (sx === null) return; const d
   if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1); else if (Math.hypot(dx, dy) < 10 && onRing(e)) toggle(); });
 const ringSize = (W, H) => Math.min(W, H * 0.92, 480);
 function onRing(e) { const r = $('stage').getBoundingClientRect(), S = ringSize(r.width, r.height);
-  return Math.hypot(e.clientX - r.left - r.width / 2, e.clientY - r.top - r.height / 2) < S * 0.42; }
+  return Math.hypot(e.clientX - r.left - r.width / 2, e.clientY - r.top - (r.height / 2 - 20)) < S * 0.42; }
 $('stage').style.touchAction = 'pan-y';
 addEventListener('keydown', e => { if (e.target.closest && e.target.closest('#index')) { if (e.key === 'Escape') closeIndex(); return; }
   if (e.target.tagName === 'BUTTON' && (e.code === 'Space' || e.key === 'Enter')) return;
@@ -162,7 +162,7 @@ function frame() {
   const c = $('c'), r = devicePixelRatio || 1, W = c.clientWidth, H = c.clientHeight;
   if (c.width !== Math.round(W * r) || c.height !== Math.round(H * r)) { c.width = Math.round(W * r); c.height = Math.round(H * r); }
   const x = c.getContext('2d'); x.setTransform(r, 0, 0, r, 0, 0); x.clearRect(0, 0, W, H);
-  const m = mode(), P = PAL[m], S = ringSize(W, H), cx = W / 2, cy = H / 2;
+  const m = mode(), P = PAL[m], S = ringSize(W, H), cx = W / 2, cy = H / 2 - 20;
   const R = S * 0.3, half = S * 0.028, k = S * 0.11, lw = Math.max(1.2, S / 320);
   const bar = (u, out, inn) => { const a = ang(u), co = Math.cos(a), si = Math.sin(a);
     x.beginPath(); x.moveTo(cx + (R - inn) * co, cy + (R - inn) * si); x.lineTo(cx + (R + out) * co, cy + (R + out) * si); x.stroke(); };
@@ -177,6 +177,7 @@ function frame() {
   }
   x.lineWidth = lw * 2.2; x.strokeStyle = rgb(P.p0); bar(head, amp(head, ENV.L) * k, amp(head, ENV.R) * k);
   $('time').innerHTML = fmt(ph * duration) + ' <span>/ ' + fmt(duration) + '</span>';
+  $('name').style.top = Math.min(H - 48, cy + S * 0.42) + 'px';
   requestAnimationFrame(frame);
 }
 renderTracks(); load(track); requestAnimationFrame(frame);
