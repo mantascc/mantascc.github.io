@@ -116,13 +116,18 @@ function renderTracks() {
   document.title = 'Aida — ' + track.n + ' ' + track.id;
   document.documentElement.style.setProperty('--accent', rgb(PAL[mode()].p0));
 }
+// Switching loops keeps the playhead's place on the wheel (its phase); the clock time follows, so it
+// differs only by the small length difference between loops and never wraps to the start.
 async function select(t, updateUrl = true) {
   if (updateUrl && location.hash !== '#' + t.n) history.pushState(null, '', '#' + t.n);
-  closeIndex(); if (t === track) return; const was = playing;
+  closeIndex(); if (t === track) return;
+  const was = playing || resumeAfterLoad, ph = phase();
   if (playing) stopSource();
-  track = t; ENV = t.env; paused = 0; duration = t.dur; renderTracks();
-  if (await load(t) && was) toggle();
+  track = t; ENV = t.env; paused = ph; duration = t.dur; renderTracks(); resumeAfterLoad = was;
+  const ok = await load(t); if (track !== t) return;
+  resumeAfterLoad = false; if (ok && was) toggle();
 }
+let resumeAfterLoad = false;
 addEventListener('hashchange', () => select(trackFromHash(), false));
 const step = d => select(TRACKS[(idx() + d + TRACKS.length) % TRACKS.length]);
 function openIndex() { $('index').classList.add('open'); $('name').setAttribute('aria-expanded', 'true'); }
